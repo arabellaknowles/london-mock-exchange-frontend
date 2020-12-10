@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class Registration extends Component {
   constructor(props) {
@@ -8,21 +9,38 @@ export default class Registration extends Component {
       username:"",
       email: "",
       password:"",
-      password_configuration: "",
+      password_confirmation: "",
       registrationErrors: "",
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
+
   handleChange(event){
-    console.log("handle change", event)
+    this.setState({
+      [event.target.name]: event.target.value
+    });
   }
 
   handleSubmit(event){
-    console.log("form submitted")
+    axios.post("http://localhost:8000/api/v1/rest-auth/registration/", {
+        username: this.state.username,
+        email: this.state.email,
+        password1: this.state.password,
+        password2: this.state.password_confirmation,
+    },
+    { withCredentials: true }
+    )
+    .then(response => {
+      console.log("registration response", response);
+    })
+    .catch(error => {
+      console.log("regisistration error", error);
+    })
     event.preventDefault();
   }
+
   render() {
     return (
       <div>
