@@ -6,15 +6,15 @@
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.5.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "react-scripts": "4.0.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "npm run build && mv build/index.html build/200.html && surge build"
   },
@@ -37,7 +37,12 @@
     ]
   },
   "devDependencies": {
+    "babel-jest": "^26.6.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
     "cypress": "^6.1.0",
-    "jest": "^26.6.0"
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
+    "react-test-renderer": "^17.0.1"
   }
 }
