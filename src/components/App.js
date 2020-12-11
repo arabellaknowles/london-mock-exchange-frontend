@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import axios from "axios";
+
 import Home from "./Home"
 import Dashboard from "./Dashboard"
 
@@ -13,28 +15,34 @@ constructor() {
   }
 }
 
-  render() {
-    return (
-      <div className="app">
-        <BrowserRouter>
-          <Switch>
-            <Route
-              exact 
-              path={"/"} 
-              render = {props => (
-              <Home {...props} loggedInStatus={this.state.loggedInStatus} />
-              )} 
+render() {
+  return (
+    <div className="app">
+      <BrowserRouter>
+        <Switch>
+          <Route
+            exact
+            path={"/"}
+            render={props => (
+              <Home
+                {...props}
+                loggedInStatus={this.state.loggedInStatus}
               />
-            <Route
-              exact 
-              path={"/dashboard"} 
-              render = {props => (
-              <Dashboard {...props} loggedInStatus={this.state.loggedInStatus} />
-              )} 
+            )}
+          />
+          <Route
+            exact
+            path={"/dashboard"}
+            render={props => (
+              <Dashboard
+                {...props}
+                loggedInStatus={this.state.loggedInStatus}
               />
-          </Switch>
-        </BrowserRouter>
-      </div>
+            )}
+          />
+        </Switch>
+      </BrowserRouter>
+    </div>
     );
   }
 }
