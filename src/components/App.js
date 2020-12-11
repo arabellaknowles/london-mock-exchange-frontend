@@ -13,7 +13,15 @@ constructor() {
     loggedInStatus: 'NOT_LOGGED_IN',
     user: {}
   }
+  this.handleLogin = this.handleLogin.bind(this);
 }
+
+  handleLogin(data) {
+    this.setState({
+      loggedInStatus: "Logged in",
+      user: data
+    })
+  }
 
 render() {
   return (
@@ -26,6 +34,7 @@ render() {
             render={props => (
               <Home
                 {...props}
+                handleLogin={this.handleLogin}
                 loggedInStatus={this.state.loggedInStatus}
               />
             )}
