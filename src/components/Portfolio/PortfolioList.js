@@ -24,7 +24,6 @@ export default class PortfolioList extends Component {
     { withCredentials: true }
     )
       .then(res => {
-        console.log(res.data)
         this.setState({
           portfolios: res.data
         });
@@ -33,13 +32,12 @@ export default class PortfolioList extends Component {
   }
 
   render() {
-    console.log(this.state.portfolios)
     const portfolios = this.state.portfolios
     return (
       <div>
         <div className="post-list" >
           {portfolios.map((portfolio) => 
-            <Portfolio name={portfolio.name} net_earnings={portfolio.net_earnings} userToken={this.props.userToken}/>
+            <Portfolio name={portfolio.name} net_earnings={portfolio.net_earnings} userToken={this.props.userToken} id={portfolio.id}/>
           )}
         </div>
       </div>
