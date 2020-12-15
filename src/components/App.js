@@ -1,19 +1,51 @@
 import React, { Component } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./Home"
+import Dashboard from "./Dashboard"
 
 export default class App extends Component {
+  constructor() {
+    super();
+      this.state = {
+        userToken: localStorage.getItem("Token")
+      }
+
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
+  }
+
+  handleLogin(data) {
+    localStorage.setItem("Token", data.key)
+    this.setState({
+      userToken: data.key
+    })
+  }
+
+  handleLogout(){
+    localStorage.removeItem("Token")
+    this.setState({
+      userToken: null
+    })
+  }
+
   render() {
+    if (this.state.userToken === null) {
+      return (
+        <div className="app">
+          <Home
+            handleLogin={this.handleLogin}
+            userToken={this.state.userToken}
+          />
+        </div>
+      )
+    } 
     return (
-      <div className="app">
-        <BrowserRouter>
-          <Switch>
-            <Route exact path={"/"} component={Home} />
-            
-          </Switch>
-        </BrowserRouter>
+      <div>
+        <Dashboard
+          userToken={this.state.userToken}
+          handleLogout={this.handleLogout}
+        />     
       </div>
-    );
+    )
   }
 }
 

@@ -14,7 +14,7 @@ describe ("registration button test", () => {
 
   test("render a register button", () => {
     
-    expect(wrapper.find("#register-btn").text()).toBe("Register");
+    expect(wrapper.find("div.app").text()).toBe("Home");
 
     
   })
