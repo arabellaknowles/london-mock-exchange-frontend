@@ -1,25 +1,29 @@
 import React, { Component } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import axios from "axios";
-
 import Home from "./Home"
 import Dashboard from "./Dashboard"
 
 export default class App extends Component {
   constructor() {
     super();
+      this.state = {
+        userToken: localStorage.getItem("Token")
+      }
 
-    this.state = {
-      userToken: localStorage.getItem("Token")
-    }
-    
     this.handleLogin = this.handleLogin.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   handleLogin(data) {
     localStorage.setItem("Token", data.key)
     this.setState({
       userToken: data.key
+    })
+  }
+
+  handleLogout(){
+    localStorage.removeItem("Token")
+    this.setState({
+      userToken: null
     })
   }
 
@@ -38,6 +42,7 @@ export default class App extends Component {
       <div>
         <Dashboard
           userToken={this.state.userToken}
+          handleLogout={this.handleLogout}
         />     
       </div>
     )

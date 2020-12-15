@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
-
 import Registration from "./auth/Registration";
 import Login from "./auth/Login";
 
