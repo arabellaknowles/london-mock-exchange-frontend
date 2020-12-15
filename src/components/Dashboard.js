@@ -1,14 +1,32 @@
-import React from "react";
+import React, { Component } from "react";
 
-const Dashboard = props => {
-  return (
-    <div>
+export default class Dashboard extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      loadingPortfolioForm: false
+    }
+
+    this.loadPortfolioForm = this.loadPortfolioForm.bind(this)
+  }
+
+  loadPortfolioForm(){
+    this.setState({
+      loadingPortfolioForm: true 
+    })
+  }
+
+  render(){
+    return (
       <div>
-        <h1>Dashboard</h1>
-        <h1>Status: {props.userToken === null ? "Logged out" : "Logged in"}</h1>
+        <div>
+          <h1>Dashboard</h1>
+          <h1>Status: {this.props.userToken === null ? "Logged out" : "Logged in"}</h1>
+          <button onClick={this.props.handleLogout}>Logout</button>
+          {this.state.loadingPortfolioForm ? <PortfolioForm /> : <button onClick={this.loadPortfolioForm}>Create New Portfolio</button>}
+        </div>
       </div>
-    </div>
-  );
-};
-
-export default Dashboard;
+    )
+  }
+}
