@@ -32,7 +32,10 @@ export default class App extends Component {
     if (this.state.userToken === null) {
       return (
         <div className="App">
-          <Header />
+          <Header 
+            userToken={this.state.userToken} 
+            handleLogout={this.handleLogout}
+          />
           <Home
             handleLogin={this.handleLogin}
             userToken={this.state.userToken}
@@ -42,7 +45,10 @@ export default class App extends Component {
     } 
     return (
       <div className="App">
-        <Header />
+        <Header 
+          userToken={this.state.userToken} 
+          handleLogout={this.handleLogout}
+        />
         <Dashboard
           userToken={this.state.userToken}
           handleLogout={this.handleLogout}

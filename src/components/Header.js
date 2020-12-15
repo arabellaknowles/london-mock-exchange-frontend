@@ -25,14 +25,17 @@ export default class Header extends Component {
                 </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/">About</a>
+              <a class="nav-link" href="/">Newsfeed</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/">Services</a>
+              <a class="nav-link" href="/">Leaderboard</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/">Contact</a>
             </li>
+            { this.props.userToken !== null ? <li class="nav-item">
+              <button type="button" class="btn btn-dark" onClick={this.props.handleLogout}>Logout</button>
+            </li> : '' }
           </ul>
         </div>
       </div>
