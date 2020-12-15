@@ -5,7 +5,7 @@ const Dashboard = props => {
     <div>
       <div>
         <h1>Dashboard</h1>
-        <h1>Status: {props.loggedInStatus}</h1>
+        <h1>Status: {props.userToken === null ? "Logged out" : "Logged in"}</h1>
       </div>
     </div>
   );

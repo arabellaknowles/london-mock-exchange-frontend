@@ -6,53 +6,41 @@ import Home from "./Home"
 import Dashboard from "./Dashboard"
 
 export default class App extends Component {
-constructor() {
-  super();
+  constructor() {
+    super();
 
-  this.state = {
-    loggedInStatus: 'NOT_LOGGED_IN',
-    user: {}
+    this.state = {
+      userToken: localStorage.getItem("Token")
+    }
+    
+    this.handleLogin = this.handleLogin.bind(this);
   }
-  this.handleLogin = this.handleLogin.bind(this);
-}
 
   handleLogin(data) {
+    localStorage.setItem("Token", data.key)
     this.setState({
-      loggedInStatus: "Logged in",
-      user: data
+      userToken: data.key
     })
   }
 
-render() {
-  return (
-    <div className="app">
-      <BrowserRouter>
-        <Switch>
-          <Route
-            exact
-            path={"/"}
-            render={props => (
-              <Home
-                {...props}
-                handleLogin={this.handleLogin}
-                loggedInStatus={this.state.loggedInStatus}
-              />
-            )}
+  render() {
+    if (this.state.userToken === null) {
+      return (
+        <div className="app">
+          <Home
+            handleLogin={this.handleLogin}
+            userToken={this.state.userToken}
           />
-          <Route
-            exact
-            path={"/dashboard"}
-            render={props => (
-              <Dashboard
-                {...props}
-                loggedInStatus={this.state.loggedInStatus}
-              />
-            )}
-          />
-        </Switch>
-      </BrowserRouter>
-    </div>
-    );
+        </div>
+      )
+    } 
+    return (
+      <div>
+        <Dashboard
+          userToken={this.state.userToken}
+        />     
+      </div>
+    )
   }
 }
 
