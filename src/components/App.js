@@ -51,7 +51,6 @@ export default class App extends Component {
         />
         <Dashboard
           userToken={this.state.userToken}
-          handleLogout={this.handleLogout}
         />     
       </div>
     )
