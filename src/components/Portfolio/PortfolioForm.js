@@ -10,6 +10,7 @@ export default class PortfolioForm extends Component {
     }
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
@@ -21,10 +22,12 @@ export default class PortfolioForm extends Component {
   handleSubmit(event){
     axios.post("http://localhost:8000/api/v1/portfolio/", {
       name: this.state.portfolioName,
-      net_earning: 0
+      net_earnings: 0
     },
-    { withCredentials: true,
-      Authorization: this.props.userToken }
+    { headers: {
+      'Authorization': this.props.userToken
+    }},
+    { withCredentials: true }
     )
     .then(response => {
       console.log(response)
