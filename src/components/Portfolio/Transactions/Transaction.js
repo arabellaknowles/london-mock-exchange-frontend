@@ -20,8 +20,7 @@ export default class Transaction extends Component {
   render() {
     return(
       <div>
-        {this.state.ticker}<br/>
-        {this.state.instrument_name}
+        {this.state.ticker} : {this.state.net_earnings}
       </div>
     )
   }
