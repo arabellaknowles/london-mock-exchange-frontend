@@ -56,9 +56,8 @@ export default class TransactionList extends Component {
         <div class="container">
           <div class="align-(middle)">
             <button onClick={this.loadTransactionForm}>Create New Transaction</button>
-            <table class="table-bordered">
-                <div class="table-striped">
-                <thead>
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
                   <tr>
                     <th scope="col">Ticker</th>
                     <th scope="col">Number of Shares</th>
@@ -82,7 +81,6 @@ export default class TransactionList extends Component {
                   />
                   )}
                 </tbody>
-              </div>
             </table> 
           </div>
         </div>
