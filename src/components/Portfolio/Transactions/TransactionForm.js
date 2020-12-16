@@ -100,7 +100,7 @@ export default class TransactionForm extends Component {
       <div class="container">
         <form class="form-horizontal" onSubmit={this.handleSubmit}>
         <h2>Transaction</h2>
-          <div class="form-group">
+          <div class="form-group row">
             <label for="firstName" class="col-sm-3 control-label">Ticker</label>
             <div class="col-sm-9">
               <input
@@ -115,7 +115,7 @@ export default class TransactionForm extends Component {
             </div>
           </div>
 
-          <div class="form-group">
+          <div class="form-group row">
             <label for="firstName" class="col-sm-3 control-label">Number of Shares</label>
             <div class="col-sm-9">
               <input
@@ -130,7 +130,7 @@ export default class TransactionForm extends Component {
             </div>
           </div>
 
-          <div class="form-group">
+          <div class="form-group row">
             <label for="firstName" class="col-sm-3 control-label">Trade Date</label>
             <div class="col-sm-9">
               <input
@@ -145,7 +145,7 @@ export default class TransactionForm extends Component {
             </div>
           </div>
 
-          <div class="form-group">
+          <div class="form-group row">
            <label for="firstName" class="col-sm-3 control-label">Close out Date</label>
             <div class="col-sm-9">
               <input
@@ -159,7 +159,7 @@ export default class TransactionForm extends Component {
               />
             </div>
           </div>
-        <button class="btn btn-success" type="submit">Make Trade</button>
+        <button class="btn btn-success btn-block" type="submit">Make Trade</button>
         </form>
       </div>
     )
