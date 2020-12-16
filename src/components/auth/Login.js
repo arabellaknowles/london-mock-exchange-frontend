@@ -73,6 +73,7 @@ export default class Login extends Component {
             </div>
           <button class="btn btn-secondary btn-block" type="submit">Login</button>
         </form>
+        <button class="btn btn-link" onClick={this.props.handleSignUp}>Register Here</button>
       </div>
     );
   }

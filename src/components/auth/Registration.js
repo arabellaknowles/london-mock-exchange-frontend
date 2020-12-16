@@ -37,6 +37,7 @@ export default class Registration extends Component {
       this.props.handleSuccessfulAuth(response.data);
       }
     })
+    .then(() => this.props.notSigningUp())
     .catch(error => {
       console.log("registration error", error);
     })
@@ -48,9 +49,9 @@ export default class Registration extends Component {
       <div class="container">
         <form class="form-horizontal" onSubmit={this.handleSubmit}>
         <h2>Registration</h2>
-          <div class="form-group row">
+          <div class="form-group">
             <label for="firstName" class="col-sm-3 control-label">Username</label>
-              <div class="col-sm-9">
+              <div class="col-sm-12">
                 <input 
                   type="username" 
                   name="username" 
@@ -62,9 +63,9 @@ export default class Registration extends Component {
               </div>
             </div>
 
-          <div class="form-group row">
+          <div class="form-group">
             <label for="firstName" class="col-sm-3 control-label">Email</label>
-              <div class="col-sm-9">
+              <div class="col-sm-12">
                 <input 
                   type="email" 
                   name="email" 
@@ -76,9 +77,9 @@ export default class Registration extends Component {
               </div>
           </div>
 
-          <div class="form-group row">
+          <div class="form-group">
             <label for="firstName" class="col-sm-3 control-label">Password</label>
-              <div class="col-sm-9">
+              <div class="col-sm-12">
                 <input 
                   type="password" 
                   name="password" 
@@ -90,9 +91,9 @@ export default class Registration extends Component {
               </div>
           </div>
 
-          <div class="form-group row">
+          <div class="form-group">
             <label for="firstName" class="col-sm-3 control-label">Password Confirmation</label>
-              <div class="col-sm-9">
+              <div class="col-sm-12">
                 <input 
                   type="password" 
                   name="password_confirmation" 
@@ -103,8 +104,9 @@ export default class Registration extends Component {
                 /> 
               </div>
           </div>
-          <button class="btn btn-success" type="submit">Register</button>
+          <button class="btn btn-success btn-block" type="submit">Register</button>
         </form>
+        <button class="btn btn-link" onClick={this.props.notSigningUp}>Already registered? Login here</button>
       </div>
     );
   }
