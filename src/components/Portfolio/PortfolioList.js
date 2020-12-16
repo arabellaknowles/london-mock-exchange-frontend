@@ -1,19 +1,35 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Portfolio from './Portfolio'
+import PortfolioForm from './PortfolioForm'
 
 export default class PortfolioList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      portfolios: []
+      portfolios: [],
+      loadingPortfolioForm: false
     };
-
+    
+    this.loadPortfolioForm = this.loadPortfolioForm.bind(this)
+    this.notShowPortfolioForm = this.notShowPortfolioForm.bind(this)
     this.loadPortfolios = this.loadPortfolios.bind(this)
   }
 
   componentDidMount() {
     this.loadPortfolios()
+  }
+
+  notShowPortfolioForm(){
+    this.setState({
+      loadingPortfolioForm: false
+    })
+  }
+
+  loadPortfolioForm(){
+    this.setState({
+      loadingPortfolioForm: true 
+    })
   }
 
   loadPortfolios() {
@@ -35,6 +51,8 @@ export default class PortfolioList extends Component {
     const portfolios = this.state.portfolios
     return (
       <div>
+        {this.state.loadingPortfolioForm ? 
+          <PortfolioForm userToken={this.props.userToken} notLoadPortfolioForm={this.notLoadPortfolioForm} /> : <button onClick={this.loadPortfolioForm}>Create New Portfolio</button>}
         <div className="post-list" >
           {portfolios.map((portfolio) => 
             <Portfolio name={portfolio.name} net_earnings={portfolio.net_earnings} userToken={this.props.userToken} id={portfolio.id}/>

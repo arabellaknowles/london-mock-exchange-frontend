@@ -29,9 +29,9 @@ export default class PortfolioForm extends Component {
     }},
     { withCredentials: true }
     )
-    .then(response => {
-      console.log(response)
-    }).catch(error => {
+    .then(
+      this.props.notLoadPortfolioForm()
+    ).catch(error => {
       console.log("error", error)
     })
     event.preventDefault();
