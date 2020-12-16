@@ -53,11 +53,13 @@ export default class PortfolioList extends Component {
       <div>
         {this.state.loadingPortfolioForm ? 
           <PortfolioForm loadPortfolios={this.loadPortfolios} userToken={this.props.userToken} notShowPortfolioForm={this.notShowPortfolioForm} /> : <button onClick={this.loadPortfolioForm}>Create New Portfolio</button>}
-        <div className="post-list" >
-          {portfolios.map((portfolio) => 
-            <Portfolio name={portfolio.name} net_earnings={portfolio.net_earnings} userToken={this.props.userToken} id={portfolio.id} loadPortfolio={this.props.loadPortfolio}/>
-          )}
-        </div>
+        <table class="table table-bordered" >
+            <tbody>
+              {portfolios.map((portfolio) => 
+                <Portfolio name={portfolio.name} net_earnings={portfolio.net_earnings} userToken={this.props.userToken} id={portfolio.id} loadPortfolio={this.props.loadPortfolio}/>
+              )}
+            </tbody>
+        </table>
       </div>
     )
   }

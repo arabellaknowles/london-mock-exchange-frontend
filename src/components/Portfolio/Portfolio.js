@@ -18,9 +18,11 @@ export default class Portfolio extends Component {
 
   render() {
     return(
-      <div>
-        <button onClick={this.handleClick}>{this.state.name}</button>
-      </div>
+      <tr>
+        <th scope="row">
+          <button class="btn btn-link btn-lg" onClick={this.handleClick}>{this.state.name}</button>
+        </th>
+      </tr>
     )
   }
 }
