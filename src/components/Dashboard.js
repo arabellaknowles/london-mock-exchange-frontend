@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PortfolioForm from "./Portfolio/PortfolioForm";
 import PortfolioList from "./Portfolio/PortfolioList";
 
 
