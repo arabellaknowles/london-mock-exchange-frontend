@@ -45,43 +45,64 @@ export default class Registration extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input 
-            type="username" 
-            name="username" 
-            placeholder="Username" 
-            value={this.state.username} 
-            onChange={this.handleChange} 
-            required 
-          />
+      <div class="container">
+        <form class="form-horizontal" onSubmit={this.handleSubmit}>
+        <h2>Registration</h2>
+          <div class="form-group row">
+            <label for="firstName" class="col-sm-3 control-label">Username</label>
+              <div class="col-sm-9">
+                <input 
+                  type="username" 
+                  name="username" 
+                  placeholder="Username" 
+                  value={this.state.username} 
+                  onChange={this.handleChange} 
+                  required 
+                />
+              </div>
+            </div>
 
-          <input 
-            type="email" 
-            name="email" 
-            placeholder="Email" 
-            value={this.state.email} 
-            onChange={this.handleChange} 
-            required 
-          /> 
+          <div class="form-group row">
+            <label for="firstName" class="col-sm-3 control-label">Email</label>
+              <div class="col-sm-9">
+                <input 
+                  type="email" 
+                  name="email" 
+                  placeholder="Email" 
+                  value={this.state.email} 
+                  onChange={this.handleChange} 
+                  required 
+                /> 
+              </div>
+          </div>
 
-          <input 
-            type="password" 
-            name="password" 
-            placeholder="Password" 
-            value={this.state.password} 
-            onChange={this.handleChange} 
-            required 
-          /> 
+          <div class="form-group row">
+            <label for="firstName" class="col-sm-3 control-label">Password</label>
+              <div class="col-sm-9">
+                <input 
+                  type="password" 
+                  name="password" 
+                  placeholder="Password" 
+                  value={this.state.password} 
+                  onChange={this.handleChange} 
+                  required 
+                /> 
+              </div>
+          </div>
 
-          <input 
-            type="password" 
-            name="password_confirmation" 
-            placeholder="Password confirmation" 
-            value={this.state.password_confirmation} 
-            onChange={this.handleChange} 
-            required 
-          /> 
+          <div class="form-group row">
+            <label for="firstName" class="col-sm-3 control-label">Password Confirmation</label>
+              <div class="col-sm-9">
+                <input 
+                  type="password" 
+                  name="password_confirmation" 
+                  placeholder="Password confirmation" 
+                  value={this.state.password_confirmation} 
+                  onChange={this.handleChange} 
+                  required 
+                /> 
+              </div>
+          </div>
           <button class="btn btn-success" type="submit">Register</button>
         </form>
       </div>
