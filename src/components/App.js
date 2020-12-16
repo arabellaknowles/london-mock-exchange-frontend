@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Home from "./Home"
 import Dashboard from "./Dashboard"
 import Header from "./Header"
+import './bootstrap.min.css'
+import '../App.css'
 
 export default class App extends Component {
   constructor() {

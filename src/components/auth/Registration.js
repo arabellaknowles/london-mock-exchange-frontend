@@ -47,7 +47,7 @@ export default class Registration extends Component {
   render() {
     return (
       <div class="container">
-        <form class="form-horizontal" onSubmit={this.handleSubmit}>
+        <form class="form-horizontal" role="form" onSubmit={this.handleSubmit}>
         <h2>Registration</h2>
           <div class="form-group">
             <label for="firstName" class="col-sm-3 control-label">Username</label>

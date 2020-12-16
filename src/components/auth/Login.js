@@ -42,32 +42,37 @@ export default class Login extends Component {
   render() {
     return (
       <div class="container">
-        <form class="form-horizontal" onSubmit={this.handleSubmit}>
+        <form class="form-horizontal" role="form" onSubmit={this.handleSubmit}>
         <h2>Login</h2>
-          <div class="form-group row">
+          <div class="form-group">
             <label for="firstName" class="col-sm-3 control-label">Username</label>
               <div class="col-sm-9">
                 <input 
+                  class="form-control"
                   type="username" 
                   name="username" 
+                  id="username"
                   placeholder="Username" 
                   value={this.state.username} 
                   onChange={this.handleChange} 
                   required 
-                />
+                autofocus/>
               </div>
              </div> 
 
-          <div class="form-group row">
+          <div class="form-group">
             <label for="firstName" class="col-sm-3 control-label">Password</label>
               <div class="col-sm-9">
                 <input 
+                  class="form-control"
+                  id="password"
                   type="password" 
                   name="password" 
                   placeholder="Password" 
                   value={this.state.password} 
                   onChange={this.handleChange} 
                   required 
+                  autofocus
                 /> 
               </div>
             </div>
