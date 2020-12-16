@@ -49,18 +49,25 @@ export default class PortfolioList extends Component {
 
   render() {
     let portfolios = this.state.portfolios
-    return (
-      <div>
-        {this.state.loadingPortfolioForm ? 
-          <PortfolioForm loadPortfolios={this.loadPortfolios} userToken={this.props.userToken} notShowPortfolioForm={this.notShowPortfolioForm} /> : <button onClick={this.loadPortfolioForm}>Create New Portfolio</button>}
-        <table class="table table-bordered" >
-          <tbody>
-            {portfolios.map((portfolio) => 
-              <Portfolio name={portfolio.name} net_earnings={portfolio.net_earnings} userToken={this.props.userToken} id={portfolio.id} loadPortfolio={this.props.loadPortfolio}/>
-            )}
-          </tbody>
-        </table>
-      </div>
-    )
+    if(this.state.loadingPortfolioForm){
+      return (
+        <div class="container">
+            <PortfolioForm loadPortfolios={this.loadPortfolios} userToken={this.props.userToken} notShowPortfolioForm={this.notShowPortfolioForm} /> 
+        </div>
+      )
+    } else {
+      return(
+        <div class="container">
+          <button onClick={this.loadPortfolioForm}>Create New Portfolio</button>
+          <table class="table table-bordered" >
+            <tbody>
+              {portfolios.map((portfolio) => 
+                <Portfolio name={portfolio.name} net_earnings={portfolio.net_earnings} userToken={this.props.userToken} id={portfolio.id} loadPortfolio={this.props.loadPortfolio}/>
+              )}
+            </tbody>
+          </table>
+        </div>
+      )
+    }
   }
 }

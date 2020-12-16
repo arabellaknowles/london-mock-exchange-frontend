@@ -41,21 +41,25 @@ export default class PortfolioForm extends Component {
 
   render(){
     return (
-      <div>
-        <div>
-          <form onSubmit={this.handleSubmit}>
-           <h1>Create Portfolio</h1>
-            <input
-            type = 'text'
-            name = 'portfolioName'
-            placeholder = 'Portfolio Name'
-            value ={this.state.portfolioName}
-            onChange={this.handleChange}
-            required
-            />
-            <button type='submit'>Create</button>
-          </form>
-        </div>
+      <div class="container">
+        <form class="form-horizontal" onSubmit={this.handleSubmit}>
+        <h2>Create Portfolio</h2>
+          <div class="form-group row">
+            <label for="firstName" class="col-sm-3 control-label">Portfolio Name</label>
+              <div class="col-sm-9">
+                <input
+                class="form-control"
+                type="text"
+                name="portfolioName"
+                placeholder="Portfolio Name"
+                value={this.state.portfolioName}
+                onChange={this.handleChange}
+                required
+                />
+              </div>
+            </div>
+            <button class="btn btn-success btn-block" type='submit'>Create</button>
+        </form>
       </div>
     )
   }
