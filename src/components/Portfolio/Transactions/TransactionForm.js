@@ -97,43 +97,68 @@ export default class TransactionForm extends Component {
 
   render(){
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            name="ticker"
-            placeholder="Ticker"
-            value={this.state.ticker}
-            onChange={this.handleChange}
-            required
-          />
+      <div class="container">
+        <form class="form-horizontal" onSubmit={this.handleSubmit}>
+        <h2>Transaction</h2>
+          <div class="form-group">
+            <label for="firstName" class="col-sm-3 control-label">Ticker</label>
+            <div class="col-sm-9">
+              <input
+                class="form-control"
+                type="text"
+                name="ticker"
+                placeholder="Ticker"
+                value={this.state.ticker}
+                onChange={this.handleChange}
+                required
+              />
+            </div>
+          </div>
 
-          <input
-            type="text"
-            name="number_of_shares"
-            placeholder="Quantity"
-            value={this.state.number_of_shares}
-            onChange={this.handleChange}
-            required
-          />
+          <div class="form-group">
+            <label for="firstName" class="col-sm-3 control-label">Number of Shares</label>
+            <div class="col-sm-9">
+              <input
+                class="form-control"
+                type="text"
+                name="number_of_shares"
+                placeholder="Number of Shares"
+                value={this.state.number_of_shares}
+                onChange={this.handleChange}
+                required
+              />
+            </div>
+          </div>
 
-          <input
-            type="date"
-            name="trade_date"
-            placeholder="Open date"
-            value={this.state.trade_date}
-            onChange={this.handleChange}
-            required
-          />
+          <div class="form-group">
+            <label for="firstName" class="col-sm-3 control-label">Trade Date</label>
+            <div class="col-sm-9">
+              <input
+                class="form-control"
+                type="date"
+                name="trade_date"
+                placeholder="Open date"
+                value={this.state.trade_date}
+                onChange={this.handleChange}
+                required
+              />
+            </div>
+          </div>
 
-          <input
-            type="date"
-            name="close_out_date"
-            placeholder="Close date"
-            value={this.state.close_out_date}
-            onChange={this.handleChange}
-            required
-          />
+          <div class="form-group">
+           <label for="firstName" class="col-sm-3 control-label">Close out Date</label>
+            <div class="col-sm-9">
+              <input
+                class="form-control"
+                type="date"
+                name="close_out_date"
+                placeholder="Close date"
+                value={this.state.close_out_date}
+                onChange={this.handleChange}
+                required
+              />
+            </div>
+          </div>
         <button class="btn btn-success" type="submit">Make Trade</button>
         </form>
       </div>

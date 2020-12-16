@@ -51,7 +51,6 @@ export default class Dashboard extends Component {
             handleLogout={this.props.handleLogout}
             loadDashboard={this.loadDashboard}
           />
-          <h1 classname="mt-5">Transactions</h1>
           <TransactionList portfolio_id={this.state.portfolioID} userToken={this.props.userToken}/>
         </div>
       </div>

@@ -55,6 +55,7 @@ export default class TransactionList extends Component {
       return(
         <div class="container">
           <div class="align-(middle)">
+          <h1 classname="mt-5">Transactions</h1>
             <button class="btn btn-dark" onClick={this.loadTransactionForm}>Create New Transaction</button>
             <table class="table table-bordered table-striped">
               <thead class="thead-dark">
