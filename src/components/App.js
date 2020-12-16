@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Home from "./Home"
 import Dashboard from "./Dashboard"
+import Header from "./Header"
 
 export default class App extends Component {
   constructor() {
@@ -30,7 +31,11 @@ export default class App extends Component {
   render() {
     if (this.state.userToken === null) {
       return (
-        <div className="app">
+        <div className="App">
+          <Header 
+            userToken={this.state.userToken} 
+            handleLogout={this.handleLogout}
+          />
           <Home
             handleLogin={this.handleLogin}
             userToken={this.state.userToken}
@@ -39,10 +44,13 @@ export default class App extends Component {
       )
     } 
     return (
-      <div>
+      <div className="App">
+        <Header 
+          userToken={this.state.userToken} 
+          handleLogout={this.handleLogout}
+        />
         <Dashboard
           userToken={this.state.userToken}
-          handleLogout={this.handleLogout}
         />     
       </div>
     )
