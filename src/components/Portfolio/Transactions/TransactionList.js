@@ -62,9 +62,9 @@ export default class TransactionList extends Component {
                 <tr>
                   <th scope="col">Ticker</th>
                   <th scope="col">Number of Shares</th>
-                  <th scope="col">Trade date</th>
-                  <th scope="col">Close out date</th>
-                  <th scope="col">Net earning</th>
+                  <th scope="col">Trade Date</th>
+                  <th scope="col">Close out Date</th>
+                  <th scope="col">Net Earning</th>
                 </tr>
               </thead>
               <tbody>
