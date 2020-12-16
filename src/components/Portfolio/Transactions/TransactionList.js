@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Transaction from './Transaction'
+import TransactionForm from './TransactionForm'
+
 
 export default class TransactionList extends Component {
   constructor(props){
@@ -10,6 +12,9 @@ export default class TransactionList extends Component {
       transactions: [],
       loadingTransactionForm: false
     }
+
+    this.loadTransactionForm = this.loadTransactionForm.bind(this)
+    this.loadTransactionList = this.loadTransactionList.bind(this)
   }
 
   componentDidMount(){
@@ -32,23 +37,44 @@ export default class TransactionList extends Component {
       .catch(err => console.log(err))
   }
 
+  loadTransactionForm(){
+    this.setState({
+      loadingTransactionForm: true
+    })
+    console.log("I AM HERE")
+    console.log(this.state.loadingTransactionForm)
+  }
+
+  loadTransactionList(){
+    this.setState({
+      loadTransactionForm: false
+    })
+  }
+
   render(){
-    return(
-      <div>
-        {this.state.transactions.map((transaction) => 
-        <Transaction 
-        ticker={transaction.ticker}
-        instrument_name={transaction.instrument_name}
-        number_of_shares={transaction.number_of_shares}
-        trade_date={transaction.trade_date}
-        close_out_date={transaction.close_out_date}
-        buy_price={transaction.buy_price}
-        sell_price={transaction.sell_price}
-        net_earnings={transaction.net_earnings}
-        portfolio_id={transaction.portfolio_id}
-        />
-        )}
-      </div>
-    )
+    if(this.state.loadingTransactionForm === false){
+      return(
+        <div>
+          <button onClick={this.loadTransactionForm}>Create New Transaction</button>
+          {this.state.transactions.map((transaction) => 
+          <Transaction 
+          ticker={transaction.ticker}
+          instrument_name={transaction.instrument_name}
+          number_of_shares={transaction.number_of_shares}
+          trade_date={transaction.trade_date}
+          close_out_date={transaction.close_out_date}
+          buy_price={transaction.buy_price}
+          sell_price={transaction.sell_price}
+          net_earnings={transaction.net_earnings}
+          portfolio_id={transaction.portfolio_id}
+          />
+          )}
+        </div>
+      )
+    } else {
+      return (
+        <TransactionForm loadTransactionList={this.loadTransactionList} userToken={this.props.userToken} portfolio_id={this.props.portfolio_id} loadTransactionList={this.loadTransactionList} /> 
+      )
+    }
   }
 }
