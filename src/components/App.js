@@ -45,12 +45,9 @@ export default class App extends Component {
     } 
     return (
       <div className="App">
-        <Header 
-          userToken={this.state.userToken} 
-          handleLogout={this.handleLogout}
-        />
         <Dashboard
           userToken={this.state.userToken}
+          handleLogout={this.handleLogout}
         />     
       </div>
     )
