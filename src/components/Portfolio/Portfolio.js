@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import TransactionList from './Transactions/TransactionList'
 
 export default class Portfolio extends Component {
   constructor(props) {
@@ -18,12 +17,10 @@ export default class Portfolio extends Component {
   }
 
   render() {
-    // portfolios will be clickable and onclick will render to transaction list
     return(
       <div>
         <button onClick={this.handleClick}>{this.state.name}</button>
       </div>
-      
     )
   }
 }

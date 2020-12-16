@@ -19,9 +19,13 @@ export default class Transaction extends Component {
 
   render() {
     return(
-      <div>
-        {this.state.ticker} : {this.state.net_earnings}
-      </div>
+        <tr>
+        <th scope="row">{this.state.ticker}</th>
+          <td>{this.state.number_of_shares}</td>
+          <td>{this.state.trade_date}</td>
+          <td>{this.state.close_out_date}</td>
+          <td>{this.state.net_earnings}</td>
+        </tr>
     )
   }
 }

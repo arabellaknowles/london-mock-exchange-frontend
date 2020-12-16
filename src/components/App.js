@@ -31,24 +31,32 @@ export default class App extends Component {
   render() {
     if (this.state.userToken === null) {
       return (
-        <div className="App">
-          <Header 
-            userToken={this.state.userToken} 
-            handleLogout={this.handleLogout}
-          />
-          <Home
-            handleLogin={this.handleLogin}
-            userToken={this.state.userToken}
-          />
+        <div className="container">
+          <div class="row">
+            <div class="col-lg-12 text-center">
+              <Header 
+                userToken={this.state.userToken} 
+                handleLogout={this.handleLogout}
+              />
+              <Home
+                handleLogin={this.handleLogin}
+                userToken={this.state.userToken}
+              />
+            </div>
+          </div>
         </div>
       )
     } 
     return (
-      <div className="App">
-        <Dashboard
-          userToken={this.state.userToken}
-          handleLogout={this.handleLogout}
-        />     
+      <div className="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <Dashboard
+              userToken={this.state.userToken}
+              handleLogout={this.handleLogout}
+            />    
+          </div> 
+        </div>
       </div>
     )
   }

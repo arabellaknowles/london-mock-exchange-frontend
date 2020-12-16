@@ -82,7 +82,7 @@ export default class Registration extends Component {
             onChange={this.handleChange} 
             required 
           /> 
-          <button type="submit">Register</button>
+          <button class="btn btn-success" type="submit">Register</button>
         </form>
       </div>
     );

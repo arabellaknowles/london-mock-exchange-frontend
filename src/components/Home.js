@@ -17,8 +17,8 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <h1 classname="App-header">Home</h1>
-        <h1>Status: {this.props.userToken === null ? "Logged out" : "Logged in"}</h1>
+        <h1 class="mt-5">Welcome to the London Mock Exchange</h1>
+        <p class="lead">Please sign in to continue</p>
         <Registration handleSuccessfulAuth={this.handleSuccessfulAuth} />
         <Login handleSuccessfulAuth={this.handleSuccessfulAuth}/>
       </div>

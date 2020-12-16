@@ -53,21 +53,38 @@ export default class TransactionList extends Component {
   render(){
     if(this.state.loadingTransactionForm === false){
       return(
-        <div>
-          <button onClick={this.loadTransactionForm}>Create New Transaction</button>
-          {this.state.transactions.map((transaction) => 
-          <Transaction 
-          ticker={transaction.ticker}
-          instrument_name={transaction.instrument_name}
-          number_of_shares={transaction.number_of_shares}
-          trade_date={transaction.trade_date}
-          close_out_date={transaction.close_out_date}
-          buy_price={transaction.buy_price}
-          sell_price={transaction.sell_price}
-          net_earnings={transaction.net_earnings}
-          portfolio_id={transaction.portfolio_id}
-          />
-          )}
+        <div class="container">
+          <div class="align-(middle)">
+            <button onClick={this.loadTransactionForm}>Create New Transaction</button>
+            <table class="table-bordered">
+                <div class="table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Ticker</th>
+                    <th scope="col">Number of Shares</th>
+                    <th scope="col">Trade date</th>
+                    <th scope="col">Close out date</th>
+                    <th scope="col">Net earning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.state.transactions.map((transaction) => 
+                  <Transaction 
+                  ticker={transaction.ticker}
+                  instrument_name={transaction.instrument_name}
+                  number_of_shares={transaction.number_of_shares}
+                  trade_date={transaction.trade_date}
+                  close_out_date={transaction.close_out_date}
+                  buy_price={transaction.buy_price}
+                  sell_price={transaction.sell_price}
+                  net_earnings={transaction.net_earnings}
+                  portfolio_id={transaction.portfolio_id}
+                  />
+                  )}
+                </tbody>
+              </div>
+            </table> 
+          </div>
         </div>
       )
     } else {

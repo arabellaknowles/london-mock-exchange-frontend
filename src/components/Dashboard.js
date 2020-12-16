@@ -38,8 +38,7 @@ export default class Dashboard extends Component {
           handleLogout={this.props.handleLogout}
           loadDashboard={this.loadDashboard}
           />
-            <h1 classname="App-header">Dashboard</h1>
-            <h1>Status: {this.props.userToken === null ? "Logged out" : "Logged in"}</h1>
+            <h1 classname="mt-5">Portfolios</h1>
             <PortfolioList userToken={this.props.userToken} loadPortfolio={this.loadPortfolio}/>
           </div>
         </div>
@@ -47,11 +46,12 @@ export default class Dashboard extends Component {
     } else { return(
       <div>
         <div>
-        <Header 
-          userToken={this.props.userToken} 
-          handleLogout={this.props.handleLogout}
-          loadDashboard={this.loadDashboard}
-        />
+          <Header 
+            userToken={this.props.userToken} 
+            handleLogout={this.props.handleLogout}
+            loadDashboard={this.loadDashboard}
+          />
+          <h1 classname="mt-5">Transactions</h1>
           <TransactionList portfolio_id={this.state.portfolioID} userToken={this.props.userToken}/>
         </div>
       </div>

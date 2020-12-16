@@ -29,7 +29,6 @@ export default class TransactionForm extends Component {
     let ticker = this.state.ticker
     let date = this.state.trade_date
     let url = `${baseUrl}v1/tickers/${ticker}/eod/${date}?access_key=${accessKey}`
-    console.log('opening price url', url)
     axios.get(url)
     .then(data => {
       this.setState({
@@ -55,17 +54,17 @@ export default class TransactionForm extends Component {
     .then(this.fetchTradeOpeningPrice)
   }
 
-  handleChange(event){
-    this.setState({
-      [event.target.name]: event.target.value
-    })
-  }
-
   calculateNetEarnings(){
     this.setState({
       net_earnings: ((this.state.buy_price * this.state.number_of_shares) - (this.state.sell_price * this.state.number_of_shares))
     })
     this.postTransaction()
+  }
+
+  handleChange(event){
+    this.setState({
+      [event.target.name]: event.target.value
+    })
   }
 
   postTransaction() {
@@ -135,7 +134,7 @@ export default class TransactionForm extends Component {
             onChange={this.handleChange}
             required
           />
-        <button type="submit">Submit</button>
+        <button class="btn btn-success" type="submit">Make Trade</button>
         </form>
       </div>
     )
