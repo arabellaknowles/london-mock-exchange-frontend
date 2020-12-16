@@ -25,5 +25,4 @@ export default class Transaction extends Component {
       </div>
     )
   }
-
 }

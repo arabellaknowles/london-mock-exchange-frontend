@@ -41,18 +41,19 @@ export default class TransactionList extends Component {
     this.setState({
       loadingTransactionForm: true
     })
-    console.log("I AM HERE")
-    console.log(this.state.loadingTransactionForm)
   }
 
   loadTransactionList(){
     this.setState({
       loadTransactionForm: false
     })
+    this.loadTransactions()
   }
 
   render(){
-    if(this.state.loadingTransactionForm === false){
+    console.log('are we here')
+    console.log(this.state.loadTransactionForm)
+    if(this.state.loadTransactionForm === false){
       return(
         <div>
           <button onClick={this.loadTransactionForm}>Create New Transaction</button>
@@ -73,7 +74,7 @@ export default class TransactionList extends Component {
       )
     } else {
       return (
-        <TransactionForm loadTransactionList={this.loadTransactionList} userToken={this.props.userToken} portfolio_id={this.props.portfolio_id} loadTransactionList={this.loadTransactionList} /> 
+        <TransactionForm loadTransactions={this.loadTransactions} loadTransactionList={this.loadTransactionList} userToken={this.props.userToken} portfolio_id={this.props.portfolio_id} loadTransactionList={this.loadTransactionList} /> 
       )
     }
   }

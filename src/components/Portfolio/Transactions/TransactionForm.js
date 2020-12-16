@@ -6,21 +6,22 @@ export default class TransactionForm extends Component {
     super(props);
 
     this.state = {
-      ticker: null,
+      ticker: '',
       instrument_name: 'shares',
-      number_of_shares: null,
-      trade_date: null,
-      close_out_date: null,
-      buy_price: null,
-      sell_price: null,
-      net_earnings: null, 
-      p_and_l: null
+      number_of_shares: '',
+      trade_date: '',
+      close_out_date: '',
+      buy_price: '',
+      sell_price: '',
+      net_earnings: '', 
+      p_and_l: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
-    // this.fetchOpeningPriceData = this.fetchClosingPriceData.bind(this)
-    // this.fetchClosingPriceData = this.fetchClosingPriceData.bind(this)
+    this.fetchOpeningPriceData = this.fetchOpeningPriceData.bind(this)
+    this.fetchMarketPriceData = this.fetchMarketPriceData.bind(this)
     this.calculateNetEarnings = this.calculateNetEarnings.bind(this)
+    this.postTransaction = this.postTransaction.bind(this)
   }
 
   fetchOpeningPriceData(){
@@ -37,9 +38,10 @@ export default class TransactionForm extends Component {
         buy_price: data.data.close
       })
     })
+    .then(this.calculateNetEarnings)
   }
 
-  fetchClosingPriceData(){
+  fetchMarketPriceData(){
     let baseUrl = 'http://api.marketstack.com/'
     let accessKey = '91d577810f3fc6e82c81f62723d07a45'
     let ticker = this.state.ticker
@@ -51,9 +53,8 @@ export default class TransactionForm extends Component {
       this.setState({
         sell_price: data.data.close
       })
-      console.log("sell price update", this.state.sell_price)
     })
-    console.log("sell price outside of then", this.state.sell_price)
+    .then(this.fetchOpeningPriceData)
   }
 
 
@@ -63,10 +64,11 @@ export default class TransactionForm extends Component {
     })
   }
 
-  calculateNetEarnings(buy_price, sell_price){
+  calculateNetEarnings(){
     this.setState({
-      net_earnings: (buy_price - sell_price)
+      net_earnings: (this.state.buy_price - this.state.sell_price)
     })
+    this.postTransaction()
   }
 
   postTransaction() {
@@ -85,25 +87,24 @@ export default class TransactionForm extends Component {
       }},
       { withCredentials: true }
       )  
-    .then((res) => {
-      this.props.loadTransactionList()
-    })
+    .then(this.props.loadTransactionList())
     .catch(error => {
       console.log("error", error)
     })
   }
 
   handleSubmit(event){ 
-    this.fetchClosingPriceData()
-    this.fetchOpeningPriceData()
-    .then(calculate => {
-      this.calculateNetEarnings(this.state.buy_price, this.state.sell_price)
-    })
-    
+    console.log("in handle submit")
+    this.fetchMarketPriceData()
     event.preventDefault();
   }
 
   render(){
+    console.log(this.state.close_out_date)
+    console.log(this.state.net_earnings)
+    console.log('rendering')
+
+
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -144,9 +145,8 @@ export default class TransactionForm extends Component {
           />
 
         <button type="submit">Submit</button>
-
-        <div> Sell: {this.state.sell_price}<br/> Buy: {this.state.buy_price} <br/> NE: {this.state.net_earnings} </div>
         </form>
+        <div> net earnings: {this.state.net_earnings}, buy price: {this.state.buy_price} </div>
       </div>
     )
   }
