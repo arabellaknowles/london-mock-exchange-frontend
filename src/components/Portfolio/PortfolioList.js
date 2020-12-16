@@ -55,7 +55,7 @@ export default class PortfolioList extends Component {
           <PortfolioForm loadPortfolios={this.loadPortfolios} userToken={this.props.userToken} notShowPortfolioForm={this.notShowPortfolioForm} /> : <button onClick={this.loadPortfolioForm}>Create New Portfolio</button>}
         <div className="post-list" >
           {portfolios.map((portfolio) => 
-            <Portfolio name={portfolio.name} net_earnings={portfolio.net_earnings} userToken={this.props.userToken} id={portfolio.id}/>
+            <Portfolio name={portfolio.name} net_earnings={portfolio.net_earnings} userToken={this.props.userToken} id={portfolio.id} loadPortfolio={this.props.loadPortfolio}/>
           )}
         </div>
       </div>
