@@ -18,6 +18,9 @@ export default class TransactionForm extends Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    // this.fetchOpeningPriceData = this.fetchClosingPriceData.bind(this)
+    // this.fetchClosingPriceData = this.fetchClosingPriceData.bind(this)
+    this.calculateNetEarnings = this.calculateNetEarnings.bind(this)
   }
 
   fetchOpeningPriceData(){
@@ -27,30 +30,30 @@ export default class TransactionForm extends Component {
     let ticker = this.state.ticker
     let date = this.state.trade_date
     let url = `${baseUrl}v1/tickers/${ticker}/eod/${date}?access_key=${accessKey}`
-    fetch(url)
-    .then(response => response.json())
+    console.log('opening price url', url)
+    axios.get(url)
     .then(data => {
       this.setState({
-        buy_price: data.close
+        buy_price: data.data.close
       })
     })
-    console.log('buy price', this.state.buy_price)
   }
 
   fetchClosingPriceData(){
-    console.log(this.state.close_out_date)
     let baseUrl = 'http://api.marketstack.com/'
     let accessKey = '91d577810f3fc6e82c81f62723d07a45'
     let ticker = this.state.ticker
     let date = this.state.close_out_date
     let url = `${baseUrl}v1/tickers/${ticker}/eod/${date}?access_key=${accessKey}`
+    console.log('closing price url', url)
     axios.get(url)
     .then(data => {
       this.setState({
-        sell_price: data.close
+        sell_price: data.data.close
       })
+      console.log("sell price update", this.state.sell_price)
     })
-    console.log("sell price update", this.state.sell_price)
+    console.log("sell price outside of then", this.state.sell_price)
   }
 
 
@@ -66,35 +69,37 @@ export default class TransactionForm extends Component {
     })
   }
 
-  handleSubmit(event){ 
-    this.fetchClosingPriceData()
-    this.fetchOpeningPriceData()
-    this.calculateNetEarnings(this.state.buy_price, this.state.sell_price)
-    console.log('net earnings', this.state.net_earnings)
-    // doing post request before retrieving data from methods
-
-    
+  postTransaction() {
     axios.post("http://localhost:8000/api/v1/portfolio/" + this.props.portfolio_id + "/transaction/", {
-      ticker: this.state.ticker,
-      instrument_name: this.state.instrument_name,
-      number_of_shares: this.state.number_of_shares,
-      trade_date: this.state.trade_date,
-      close_out_date: this.state.close_out_date,
-      buy_price: this.state.buy_price,
-      sell_price: this.state.sell_price,
-      net_earnings: this.state.net_earnings, 
-    },
-    { headers: {
-      'Authorization': this.props.userToken
-    }},
-    { withCredentials: true }
-    )
-    .then((res)  => 
+        ticker: this.state.ticker,
+        instrument_name: this.state.instrument_name,
+        number_of_shares: this.state.number_of_shares,
+        trade_date: this.state.trade_date,
+        close_out_date: this.state.close_out_date,
+        buy_price: this.state.buy_price,
+        sell_price: this.state.sell_price,
+        net_earnings: this.state.net_earnings, 
+      },
+      { headers: {
+        'Authorization': this.props.userToken
+      }},
+      { withCredentials: true }
+      )  
+    .then((res) => {
       this.props.loadTransactionList()
-    )
+    })
     .catch(error => {
       console.log("error", error)
     })
+  }
+
+  handleSubmit(event){ 
+    this.fetchClosingPriceData()
+    this.fetchOpeningPriceData()
+    .then(calculate => {
+      this.calculateNetEarnings(this.state.buy_price, this.state.sell_price)
+    })
+    
     event.preventDefault();
   }
 
@@ -139,6 +144,8 @@ export default class TransactionForm extends Component {
           />
 
         <button type="submit">Submit</button>
+
+        <div> Sell: {this.state.sell_price}<br/> Buy: {this.state.buy_price} <br/> NE: {this.state.net_earnings} </div>
         </form>
       </div>
     )
