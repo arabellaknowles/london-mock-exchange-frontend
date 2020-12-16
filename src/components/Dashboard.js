@@ -4,7 +4,6 @@ import TransactionList from "./Portfolio/Transactions/TransactionList";
 import Header from "./Header"
 
 
-
 export default class Dashboard extends Component {
   constructor(props){
     super(props);
@@ -31,28 +30,28 @@ export default class Dashboard extends Component {
   render(){
     if (this.state.portfolioID === null) {
       return (
-        <div>
-          <div>
+        <div class="dashboard_background">
           <Header 
           userToken={this.props.userToken} 
           handleLogout={this.props.handleLogout}
           loadDashboard={this.loadDashboard}
           />
+          <div class="div1">
             <h1 classname="mt-5">Portfolios</h1>
             <PortfolioList userToken={this.props.userToken} loadPortfolio={this.loadPortfolio}/>
           </div>
         </div>
       )
     } else { return(
-      <div>
-        <div>
+      <div class="dashboard_background"> 
           <Header 
             userToken={this.props.userToken} 
             handleLogout={this.props.handleLogout}
             loadDashboard={this.loadDashboard}
           />
-          <TransactionList portfolio_id={this.state.portfolioID} userToken={this.props.userToken}/>
-        </div>
+          <div class="div1">
+            <TransactionList portfolio_id={this.state.portfolioID} userToken={this.props.userToken}/>
+          </div>
       </div>
     )}
   }

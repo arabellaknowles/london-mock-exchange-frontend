@@ -47,7 +47,7 @@ export default class Login extends Component {
         <p class="lead">Please sign in to continue</p>
           <div class="form-group">
             <label for="firstName" class="col-sm-3 control-label">Username</label>
-              <div class="col-sm-9">
+              <div class="col-sm-12">
                 <input 
                   class="form-control"
                   type="username" 
@@ -57,13 +57,14 @@ export default class Login extends Component {
                   value={this.state.username} 
                   onChange={this.handleChange} 
                   required 
-                autofocus/>
+                  autofocus
+                />
               </div>
              </div> 
 
           <div class="form-group">
             <label for="firstName" class="col-sm-3 control-label">Password</label>
-              <div class="col-sm-9">
+              <div class="col-sm-12">
                 <input 
                   class="form-control"
                   id="password"
