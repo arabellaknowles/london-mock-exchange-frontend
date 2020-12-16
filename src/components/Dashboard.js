@@ -30,7 +30,7 @@ export default class Dashboard extends Component {
   render(){
     if (this.state.portfolioID === null) {
       return (
-        <div class="dashboard_background">
+        <div class="dashboard_background2">
           <Header 
           userToken={this.props.userToken} 
           handleLogout={this.props.handleLogout}
@@ -43,7 +43,7 @@ export default class Dashboard extends Component {
         </div>
       )
     } else { return(
-      <div class="dashboard_background"> 
+      <div class="dashboard_background2"> 
           <Header 
             userToken={this.props.userToken} 
             handleLogout={this.props.handleLogout}
