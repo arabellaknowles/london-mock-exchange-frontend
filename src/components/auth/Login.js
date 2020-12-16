@@ -43,7 +43,8 @@ export default class Login extends Component {
     return (
       <div class="container">
         <form class="form-horizontal" role="form" onSubmit={this.handleSubmit}>
-        <h2>Login</h2>
+        <h1 class="mt-5">London Mock Exchange</h1>
+        <p class="lead">Please sign in to continue</p>
           <div class="form-group">
             <label for="firstName" class="col-sm-3 control-label">Username</label>
               <div class="col-sm-9">
@@ -77,8 +78,8 @@ export default class Login extends Component {
               </div>
             </div>
           <button class="btn btn-secondary btn-block" type="submit">Login</button>
+          <button class="btn btn-link" onClick={this.props.handleSignUp}>Register Here</button>
         </form>
-        <button class="btn btn-link" onClick={this.props.handleSignUp}>Register Here</button>
       </div>
     );
   }

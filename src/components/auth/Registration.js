@@ -48,7 +48,8 @@ export default class Registration extends Component {
     return (
       <div class="container">
         <form class="form-horizontal" role="form" onSubmit={this.handleSubmit}>
-        <h2>Registration</h2>
+        <h1 class="mt-5">London Mock Exchange</h1>
+        <p class="lead">Create an account</p>
           <div class="form-group">
             <label for="firstName" class="col-sm-3 control-label">Username</label>
               <div class="col-sm-12">
@@ -105,8 +106,8 @@ export default class Registration extends Component {
               </div>
           </div>
           <button class="btn btn-success btn-block" type="submit">Register</button>
+          <button class="btn btn-link" onClick={this.props.notSigningUp}>Already registered? Login here</button>
         </form>
-        <button class="btn btn-link" onClick={this.props.notSigningUp}>Already registered? Login here</button>
       </div>
     );
   }

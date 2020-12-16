@@ -36,16 +36,12 @@ export default class Home extends Component {
     if(this.state.signingUp){
       return (
         <div>
-          <h1 class="mt-5">Welcome to the London Mock Exchange</h1>
-          <p class="lead">Please register to make an account</p>
           <Registration notSigningUp={this.notSigningUp} handleSuccessfulAuth={this.handleSuccessfulAuth} />
         </div>
       );
     } else {
       return (
         <div>
-          <h1 class="mt-5">Welcome to the London Mock Exchange</h1>
-          <p class="lead">Please sign in to continue</p>
           <Login handleSignUp={this.handleSignUp} handleSuccessfulAuth={this.handleSuccessfulAuth}/>
         </div>
       );
