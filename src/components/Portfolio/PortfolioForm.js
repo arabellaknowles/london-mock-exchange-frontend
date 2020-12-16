@@ -31,7 +31,9 @@ export default class PortfolioForm extends Component {
     )
     .then((res)  => 
       this.props.notShowPortfolioForm()
-    ).catch(error => {
+    )
+    .then(() => this.props.loadPortfolios())
+    .catch(error => {
       console.log("error", error)
     })
     event.preventDefault();

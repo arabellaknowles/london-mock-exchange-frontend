@@ -20,10 +20,6 @@ export default class PortfolioList extends Component {
     this.loadPortfolios()
   }
 
-  componentDidUpdate() {
-    this.loadPortfolios()
-  }
-
   notShowPortfolioForm(){
     this.setState({
       loadingPortfolioForm: false
@@ -56,7 +52,7 @@ export default class PortfolioList extends Component {
     return (
       <div>
         {this.state.loadingPortfolioForm ? 
-          <PortfolioForm userToken={this.props.userToken} notShowPortfolioForm={this.notShowPortfolioForm} /> : <button onClick={this.loadPortfolioForm}>Create New Portfolio</button>}
+          <PortfolioForm loadPortfolios={this.loadPortfolios} userToken={this.props.userToken} notShowPortfolioForm={this.notShowPortfolioForm} /> : <button onClick={this.loadPortfolioForm}>Create New Portfolio</button>}
         <div className="post-list" >
           {portfolios.map((portfolio) => 
             <Portfolio name={portfolio.name} net_earnings={portfolio.net_earnings} userToken={this.props.userToken} id={portfolio.id}/>
