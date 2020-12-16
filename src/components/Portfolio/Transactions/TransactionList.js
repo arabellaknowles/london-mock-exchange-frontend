@@ -15,6 +15,7 @@ export default class TransactionList extends Component {
 
     this.loadTransactionForm = this.loadTransactionForm.bind(this)
     this.loadTransactionList = this.loadTransactionList.bind(this)
+    this.loadTransactions = this.loadTransactions.bind(this)
   }
 
   componentDidMount(){
@@ -45,15 +46,12 @@ export default class TransactionList extends Component {
 
   loadTransactionList(){
     this.setState({
-      loadTransactionForm: false
+      loadingTransactionForm: false
     })
-    this.loadTransactions()
   }
 
   render(){
-    console.log('are we here')
-    console.log(this.state.loadTransactionForm)
-    if(this.state.loadTransactionForm === false){
+    if(this.state.loadingTransactionForm === false){
       return(
         <div>
           <button onClick={this.loadTransactionForm}>Create New Transaction</button>
@@ -74,7 +72,7 @@ export default class TransactionList extends Component {
       )
     } else {
       return (
-        <TransactionForm loadTransactions={this.loadTransactions} loadTransactionList={this.loadTransactionList} userToken={this.props.userToken} portfolio_id={this.props.portfolio_id} loadTransactionList={this.loadTransactionList} /> 
+        <TransactionForm loadTransactions={this.loadTransactions} loadTransactionList={this.loadTransactionList} userToken={this.props.userToken} portfolio_id={this.props.portfolio_id} /> 
       )
     }
   }
