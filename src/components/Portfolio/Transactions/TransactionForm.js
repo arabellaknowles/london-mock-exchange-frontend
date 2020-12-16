@@ -116,7 +116,7 @@ export default class TransactionForm extends Component {
 
           <input
             type="text"
-            name="quantity"
+            name="number_of_shares"
             placeholder="Quantity"
             value={this.state.number_of_shares}
             onChange={this.handleChange}
@@ -125,8 +125,8 @@ export default class TransactionForm extends Component {
 
           <input
             type="date"
-            name="open_date"
-            placeholder="Open_date"
+            name="trade_date"
+            placeholder="Open date"
             value={this.state.trade_date}
             onChange={this.handleChange}
             required
@@ -134,8 +134,8 @@ export default class TransactionForm extends Component {
 
           <input
             type="date"
-            name="close_date"
-            placeholder="Close_date"
+            name="close_out_date"
+            placeholder="Close date"
             value={this.state.close_out_date}
             onChange={this.handleChange}
             required
