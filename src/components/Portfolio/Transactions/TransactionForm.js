@@ -56,7 +56,7 @@ export default class TransactionForm extends Component {
 
   calculateNetEarnings(){
     this.setState({
-      net_earnings: ((this.state.buy_price * this.state.number_of_shares) - (this.state.sell_price * this.state.number_of_shares))
+      net_earnings: ((this.state.sell_price * this.state.number_of_shares) - (this.state.buy_price * this.state.number_of_shares))
     })
     this.postTransaction()
   }
