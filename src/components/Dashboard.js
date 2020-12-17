@@ -3,6 +3,7 @@ import PortfolioList from "./Portfolio/PortfolioList";
 import TransactionList from "./Portfolio/Transactions/TransactionList";
 import Header from "./Header";
 import axios from 'axios';
+import NewsList from './newsfeed/NewsList'
 
 
 export default class Dashboard extends Component {
@@ -10,12 +11,14 @@ export default class Dashboard extends Component {
     super(props);
     this.state = {
       portfolioID: null,
-      portfolioName: ''
+      portfolioName: '',
+      loadingNewsList: false
     }
 
     this.loadPortfolio = this.loadPortfolio.bind(this)
     this.loadDashboard = this.loadDashboard.bind(this)
     this.deletePortfolio = this.deletePortfolio.bind(this)
+    this.loadNewsList = this.loadNewsList.bind(this)
   }
 
   loadPortfolio(id, name) {
@@ -25,9 +28,17 @@ export default class Dashboard extends Component {
     })
   }
 
+  loadNewsList(){
+    this.setState({
+      loadingNewsList: true,
+    })
+    console.log(this.state.loadingNewsList)
+  }
+
   loadDashboard(){
     this.setState({
-      portfolioID: null
+      portfolioID: null,
+      loadingNewsList: false
     })
   }
 
@@ -43,18 +54,38 @@ export default class Dashboard extends Component {
     .catch(err => console.log(err))
   }
 
+  // click on newsfeed rerender page with NewsList 
+
   render(){
-    if (this.state.portfolioID === null) {
+    console.log('portfolio id', this.state.portfolioID)
+    console.log('newlist loading?', this.state.loadingNewsList)
+
+    if ((this.state.portfolioID === null) && (this.state.loadingNewsList === false)) {
       return (
         <div class="dashboard_background2">
           <Header 
           userToken={this.props.userToken} 
           handleLogout={this.props.handleLogout}
           loadDashboard={this.loadDashboard}
+          loadNewsList={this.loadNewsList}
           />
           <div class="div1">
             <h1 classname="mt-5">My Portfolios</h1>
             <PortfolioList userToken={this.props.userToken} loadPortfolio={this.loadPortfolio}/>
+          </div>
+        </div>
+      )
+    } else if((this.state.portfolioID === null) && (this.state.loadingNewsList === true)){
+      return(
+        <div class="dashboard_background2">
+          <Header 
+            userToken={this.props.userToken} 
+            handleLogout={this.props.handleLogout}
+            loadDashboard={this.loadDashboard}
+            loadNewsList={this.loadNewsList}
+          />
+          <div class="div1">
+            <NewsList />
           </div>
         </div>
       )
@@ -64,6 +95,7 @@ export default class Dashboard extends Component {
             userToken={this.props.userToken} 
             handleLogout={this.props.handleLogout}
             loadDashboard={this.loadDashboard}
+            loadNewsList={this.loadNewsList}
           />
           <div class="div1">
             <TransactionList 
