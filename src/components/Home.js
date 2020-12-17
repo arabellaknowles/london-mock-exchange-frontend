@@ -6,22 +6,45 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      signingUp: false
+    }
+
     this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
+    this.handleSignUp = this.handleSignUp.bind(this);
+    this.notSigningUp = this.notSigningUp.bind(this)
   }
 
   handleSuccessfulAuth(data) {
     this.props.handleLogin(data);
   }
 
+  handleSignUp(){
+    this.setState({
+      signingUp: true
+    })
+  }
+
+  notSigningUp(){
+    this.setState({
+      signingUp: false
+    })
+  }
 
   render() {
-    return (
-      <div>
-        <h1 classname="App-header">Home</h1>
-        <h1>Status: {this.props.userToken === null ? "Logged out" : "Logged in"}</h1>
-        <Registration handleSuccessfulAuth={this.handleSuccessfulAuth} />
-        <Login handleSuccessfulAuth={this.handleSuccessfulAuth}/>
-      </div>
-    );
+    console.log(this.state.signingUp)
+    if(this.state.signingUp){
+      return (
+        <div>
+          <Registration notSigningUp={this.notSigningUp} handleSuccessfulAuth={this.handleSuccessfulAuth} />
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <Login handleSignUp={this.handleSignUp} handleSuccessfulAuth={this.handleSuccessfulAuth}/>
+        </div>
+      );
+    }
   }
 }

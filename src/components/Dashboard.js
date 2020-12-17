@@ -1,35 +1,58 @@
 import React, { Component } from "react";
-import PortfolioForm from "./Portfolio/PortfolioForm";
 import PortfolioList from "./Portfolio/PortfolioList";
+import TransactionList from "./Portfolio/Transactions/TransactionList";
+import Header from "./Header"
 
 
 export default class Dashboard extends Component {
   constructor(props){
     super(props);
-
     this.state = {
-      loadingPortfolioForm: false
+      portfolioID: null
     }
 
-    this.loadPortfolioForm = this.loadPortfolioForm.bind(this)
+    this.loadPortfolio = this.loadPortfolio.bind(this)
+    this.loadDashboard = this.loadDashboard.bind(this)
   }
 
-  loadPortfolioForm(){
+  loadPortfolio(id) {
     this.setState({
-      loadingPortfolioForm: true 
+      portfolioID: id
+    })
+  }
+
+  loadDashboard(){
+    this.setState({
+      portfolioID: null
     })
   }
 
   render(){
-    return (
-      <div>
-        <div>
-          <h1 classname="App-header">Dashboard</h1>
-          <h1>Status: {this.props.userToken === null ? "Logged out" : "Logged in"}</h1>
-          {this.state.loadingPortfolioForm ? <PortfolioForm userToken={this.props.userToken}/> : <button onClick={this.loadPortfolioForm}>Create New Portfolio</button>}
-          <PortfolioList userToken={this.props.userToken} />
+    if (this.state.portfolioID === null) {
+      return (
+        <div class="dashboard_background2">
+          <Header 
+          userToken={this.props.userToken} 
+          handleLogout={this.props.handleLogout}
+          loadDashboard={this.loadDashboard}
+          />
+          <div class="div1">
+            <h1 classname="mt-5">Portfolios</h1>
+            <PortfolioList userToken={this.props.userToken} loadPortfolio={this.loadPortfolio}/>
+          </div>
         </div>
+      )
+    } else { return(
+      <div class="dashboard_background2"> 
+          <Header 
+            userToken={this.props.userToken} 
+            handleLogout={this.props.handleLogout}
+            loadDashboard={this.loadDashboard}
+          />
+          <div class="div1">
+            <TransactionList portfolio_id={this.state.portfolioID} userToken={this.props.userToken}/>
+          </div>
       </div>
-    )
+    )}
   }
 }

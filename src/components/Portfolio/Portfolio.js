@@ -1,21 +1,28 @@
 import React, { Component } from 'react';
 
-export default class PortfolioList extends Component {
+export default class Portfolio extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: this.props.name,
       net_earnings: this.props.net_earnings,
-      portfolio_id: this.props.id
+      portfolio_id: this.props.id,
     };
+
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick(){
+    this.props.loadPortfolio(this.state.portfolio_id)
   }
 
   render() {
-    // portfolios will be clickable and onclick will render to transaction list
     return(
-      <div>
-        {this.state.name}
-      </div>
+      <tr>
+        <th scope="row">
+          <button class="btn btn-link btn-lg" onClick={this.handleClick}>{this.state.name}</button>
+        </th>
+      </tr>
     )
   }
 }

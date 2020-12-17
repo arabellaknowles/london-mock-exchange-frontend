@@ -20,9 +20,9 @@ export default class Header extends Component {
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="/">Home
+              <button type="button" class="btn btn-dark" onClick={this.props.loadDashboard}>Home
                 <span class="sr-only">(current)</span>
-                </a>
+                </button>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/">Newsfeed</a>

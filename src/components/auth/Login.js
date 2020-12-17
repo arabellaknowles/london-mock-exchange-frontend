@@ -34,34 +34,52 @@ export default class Login extends Component {
       }
     })
     .catch(error => {
-      console.log("login error", error);
+      alert("Login failed, please try again", error);
     })
     event.preventDefault();
   }
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input 
-            type="username" 
-            name="username" 
-            placeholder="Username" 
-            value={this.state.username} 
-            onChange={this.handleChange} 
-            required 
-          />
+      <div class="container">
+        <form class="form-horizontal" role="form" onSubmit={this.handleSubmit}>
+        <h1 class="mt-5">London Mock Exchange</h1>
+        <p class="lead">Please sign in to continue</p>
+          <div class="form-group">
+            <label for="firstName" class="col-sm-3 control-label">Username</label>
+              <div class="col-sm-12">
+                <input 
+                  class="form-control"
+                  type="username" 
+                  name="username" 
+                  id="username"
+                  placeholder="Username" 
+                  value={this.state.username} 
+                  onChange={this.handleChange} 
+                  required 
+                  autofocus
+                />
+              </div>
+             </div> 
 
-          <input 
-            type="password" 
-            name="password" 
-            placeholder="Password" 
-            value={this.state.password} 
-            onChange={this.handleChange} 
-            required 
-          /> 
-
-          <button type="submit">Login</button>
+          <div class="form-group">
+            <label for="firstName" class="col-sm-3 control-label">Password</label>
+              <div class="col-sm-12">
+                <input 
+                  class="form-control"
+                  id="password"
+                  type="password" 
+                  name="password" 
+                  placeholder="Password" 
+                  value={this.state.password} 
+                  onChange={this.handleChange} 
+                  required 
+                  autofocus
+                /> 
+              </div>
+            </div>
+          <button class="btn btn-secondary btn-block" type="submit">Login</button>
+          <button class="btn btn-link" onClick={this.props.handleSignUp}>Register Here</button>
         </form>
       </div>
     );

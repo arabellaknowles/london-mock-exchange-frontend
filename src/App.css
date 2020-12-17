@@ -1,38 +1,39 @@
-.App {
-  text-align: center;
+.dashboard_background {
+  height: 1000px;
+  margin: 0px;
+  border: 5px solid;
+  background-color: rgba(255, 251, 251, 0.829);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.dashboard_background2{
+  padding: 15px;
+  height: 700px;
+
+  margin: 0 auto;
+  border-radius: 0.3em;
+  background-color: #f2f2f2;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  background: url('https://g.foolcdn.com/image/?url=https%3A//g.foolcdn.com/editorial/images/494749/gettyimages-523155194.jpg&w=2000&op=resize') fixed;
+ background-size: cover;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+*[role="form"] {
+ max-width: 530px;
+ padding: 15px;
+ margin: 0 auto;
+ border-radius: 0.3em;
+ background-color: #f2f2f2;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+*[role="form"] h2 { 
+ font-family: 'Open Sans' , sans-serif;
+ font-size: 40px;
+ font-weight: 600;
+ color: #000000;
+ margin-top: 5%;
+ text-align: center;
+ text-transform: uppercase;
+ letter-spacing: 4px;
 }
