@@ -54,7 +54,9 @@ export default class Dashboard extends Component {
   }
 
   render(){
-    if ((this.state.portfolioID === null) && (this.state.loadingNewsList === false)) {
+    let noPortfolioId = (this.state.portfolioID === null)
+    let loadingNewsList = (this.state.loadingNewsList === true)
+    if (noPortfolioId && !loadingNewsList) {
       return (
         <div class="dashboard_background2">
           <Header 
@@ -69,7 +71,7 @@ export default class Dashboard extends Component {
           </div>
         </div>
       )
-    } else if((this.state.portfolioID === null) && (this.state.loadingNewsList === true)){
+    } else if (noPortfolioId && loadingNewsList){
       return(
         <div class="dashboard_background2">
           <Header 
