@@ -31,8 +31,9 @@ export default class NewsList extends Component {
   render(){
     return(
       <div>
+        <h1>Financial Articles</h1>
         {this.state.headlines.map((headline) => 
-          <NewsHeadline headline={headline.webTitle} thumbnail={headline.fields.thumbnail}/>
+          <NewsHeadline headline={headline.webTitle} thumbnail={headline.fields.thumbnail} url={headline.webUrl}/>
         )}
       </div>
     )

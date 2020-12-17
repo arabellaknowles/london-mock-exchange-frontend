@@ -11,7 +11,7 @@ export default class NewsHeadline extends Component {
   render(){
     return (
       <div class="container">
-        <h5>{this.props.headline}</h5>
+        <h4><a href={this.props.url}>{this.props.headline}</a></h4>
         <img src={this.props.thumbnail}></img>
       </div>
     )
