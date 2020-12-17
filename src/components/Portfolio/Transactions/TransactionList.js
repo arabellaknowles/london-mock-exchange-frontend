@@ -83,7 +83,7 @@ export default class TransactionList extends Component {
                 )}
               </tbody>
             </table> 
-            <button class="btn btn-dark" onClick={this.loadTransactionForm}>Create New Trade</button>
+            <button class="btn btn-success" onClick={this.loadTransactionForm}>Make New Trade</button>
             <br></br>
             <br></br>
             <button class="btn btn-warning" onClick={this.props.deletePortfolio}>Delete Portfolio</button>

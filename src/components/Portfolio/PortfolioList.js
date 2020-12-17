@@ -58,7 +58,7 @@ export default class PortfolioList extends Component {
     } else {
       return(
         <div class="container">
-          <button onClick={this.loadPortfolioForm}>Create New Portfolio</button>
+          <button class="btn btn-success" onClick={this.loadPortfolioForm}>Create New Portfolio</button>
           <table class="table table-bordered" >
             <tbody>
               {portfolios.map((portfolio) => 
