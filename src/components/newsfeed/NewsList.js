@@ -16,8 +16,8 @@ export default class NewsList extends Component {
   }
 
   fetchNewsHeadlines(){
-    // const today = '2020-12-02' // get today's date function
-    const headline_url = `https://content.guardianapis.com/search?from-date=2020-12-17&to-date=2020-12-17&show-elements=image&show-fields=thumbnail&q=finance&api-key=78fb758b-9cd0-48e8-96c1-fe29eb42c6d0`
+    const date = this._getTodaysDate()
+    const headline_url = `https://content.guardianapis.com/search?from-date=${date}&to-date=${date}&show-elements=image&show-fields=thumbnail&q=finance&api-key=78fb758b-9cd0-48e8-96c1-fe29eb42c6d0`
     axios.get(headline_url)
     .then((response) => {
       this.setState({
@@ -26,6 +26,10 @@ export default class NewsList extends Component {
       console.log(response.data.response.results)
     })
     .catch(error => console.log(error))
+  }
+
+  _getTodaysDate(){
+    return (new Date().toJSON().slice(0,10))
   }
 
   render(){
