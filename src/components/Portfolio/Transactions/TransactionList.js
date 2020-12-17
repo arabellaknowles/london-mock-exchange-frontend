@@ -55,8 +55,9 @@ export default class TransactionList extends Component {
       return(
         <div class="container">
           <div class="align-(middle)">
-          <h1 classname="mt-5">Transactions</h1>
-            <button class="btn btn-dark" onClick={this.loadTransactionForm}>Create New Transaction</button>
+          <h1 classname="mt-5">{this.props.portfolio_name}</h1>
+          <button onClick={this.props.deletePortfolio}>Delete Portfolio</button>
+          <h5 class="float-(left)">Trade History</h5>
             <table class="table table-bordered table-striped">
               <thead class="thead-dark">
                 <tr>
@@ -83,6 +84,7 @@ export default class TransactionList extends Component {
                 )}
               </tbody>
             </table> 
+            <button class="btn btn-dark" onClick={this.loadTransactionForm}>Create New Trade</button>
           </div>
         </div>
       )

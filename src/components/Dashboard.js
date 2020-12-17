@@ -1,23 +1,27 @@
 import React, { Component } from "react";
 import PortfolioList from "./Portfolio/PortfolioList";
 import TransactionList from "./Portfolio/Transactions/TransactionList";
-import Header from "./Header"
+import Header from "./Header";
+import axios from 'axios';
 
 
 export default class Dashboard extends Component {
   constructor(props){
     super(props);
     this.state = {
-      portfolioID: null
+      portfolioID: null,
+      portfolioName: ''
     }
 
     this.loadPortfolio = this.loadPortfolio.bind(this)
     this.loadDashboard = this.loadDashboard.bind(this)
+    this.deletePortfolio = this.deletePortfolio.bind(this)
   }
 
-  loadPortfolio(id) {
+  loadPortfolio(id, name) {
     this.setState({
-      portfolioID: id
+      portfolioID: id,
+      portfolioName: name,
     })
   }
 
@@ -25,6 +29,18 @@ export default class Dashboard extends Component {
     this.setState({
       portfolioID: null
     })
+  }
+
+  deletePortfolio(event){
+    let url = "http://localhost:8000/api/v1/portfolio/" + this.state.portfolioID
+    axios.delete(url, {
+      headers: {
+        'Authorization': this.props.userToken
+      }},
+      { withCredentials: true }
+    )
+    .then(() => (this.loadDashboard()))
+    .catch(err => console.log(err))
   }
 
   render(){
@@ -37,7 +53,7 @@ export default class Dashboard extends Component {
           loadDashboard={this.loadDashboard}
           />
           <div class="div1">
-            <h1 classname="mt-5">Portfolios</h1>
+            <h1 classname="mt-5">My Portfolios</h1>
             <PortfolioList userToken={this.props.userToken} loadPortfolio={this.loadPortfolio}/>
           </div>
         </div>
@@ -50,7 +66,12 @@ export default class Dashboard extends Component {
             loadDashboard={this.loadDashboard}
           />
           <div class="div1">
-            <TransactionList portfolio_id={this.state.portfolioID} userToken={this.props.userToken}/>
+            <TransactionList 
+              portfolio_name={this.state.portfolioName} 
+              portfolio_id={this.state.portfolioID} 
+              userToken={this.props.userToken}
+              deletePortfolio={this.deletePortfolio}
+            />
           </div>
       </div>
     )}

@@ -13,7 +13,7 @@ export default class Portfolio extends Component {
   }
 
   handleClick(){
-    this.props.loadPortfolio(this.state.portfolio_id)
+    this.props.loadPortfolio(this.state.portfolio_id, this.state.name)
   }
 
   render() {
