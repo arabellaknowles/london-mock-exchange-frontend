@@ -10,7 +10,10 @@ export default class NewsHeadline extends Component {
 
   render(){
     return (
-      <div>{this.props.headline}</div>
+      <div class="container">
+        <h5>{this.props.headline}</h5>
+        <img src={this.props.thumbnail}></img>
+      </div>
     )
   }
 }
