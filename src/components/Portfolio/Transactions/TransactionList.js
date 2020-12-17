@@ -71,14 +71,14 @@ export default class TransactionList extends Component {
                 {this.state.transactions.map((transaction) => 
                 <Transaction 
                 ticker={transaction.ticker}
-                instrument_name={transaction.instrument_name}
-                number_of_shares={transaction.number_of_shares}
-                trade_date={transaction.trade_date}
-                close_out_date={transaction.close_out_date}
-                buy_price={transaction.buy_price}
-                sell_price={transaction.sell_price}
-                net_earnings={transaction.net_earnings}
-                portfolio_id={transaction.portfolio_id}
+                instrumentName={transaction.instrument_name}
+                numberOfShares={transaction.number_of_shares}
+                tradeDate={transaction.trade_date}
+                closeOutDate={transaction.close_out_date}
+                buyPrice={transaction.buy_price}
+                sellPrice={transaction.sell_price}
+                netEarnings={transaction.net_earnings}
+                portfolioId={transaction.portfolio_id}
                 />
                 )}
               </tbody>
