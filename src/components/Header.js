@@ -25,7 +25,7 @@ export default class Header extends Component {
                 </button>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/">Newsfeed</a>
+              <button type="button" class="btn btn-dark" onClick={this.props.loadNewsList}>Newsfeed</button>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/">Leaderboard</a>

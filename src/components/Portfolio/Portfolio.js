@@ -13,14 +13,15 @@ export default class Portfolio extends Component {
   }
 
   handleClick(){
-    this.props.loadPortfolio(this.state.portfolio_id)
+    this.props.loadPortfolio(this.state.portfolio_id, this.state.name)
   }
 
   render() {
     return(
       <tr>
         <th scope="row">
-          <button class="btn btn-link btn-lg" onClick={this.handleClick}>{this.state.name}</button>
+         <button class="btn btn-link btn-lg" onClick={this.handleClick}>{this.state.name}</button>
+         <p>Current earnings: {this.state.net_earnings}</p>
         </th>
       </tr>
     )
