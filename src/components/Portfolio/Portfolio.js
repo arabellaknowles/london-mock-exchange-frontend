@@ -21,7 +21,7 @@ export default class Portfolio extends Component {
       <tr>
         <th scope="row">
          <button class="btn btn-link btn-lg" onClick={this.handleClick}>{this.state.name}</button>
-         <p>Current earnings: {this.state.net_earnings}</p>
+         <p>Current earnings: £{this.state.net_earnings.toFixed(2)}</p>
         </th>
       </tr>
     )

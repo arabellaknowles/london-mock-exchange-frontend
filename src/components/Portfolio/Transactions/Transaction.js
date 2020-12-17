@@ -24,7 +24,7 @@ export default class Transaction extends Component {
           <td>{this.state.number_of_shares}</td>
           <td>{this.state.trade_date}</td>
           <td>{this.state.close_out_date}</td>
-          <td>£ {this.state.net_earnings}</td>
+          <td>£ {this.state.net_earnings.toFixed(2)}</td>
         </tr>
     )
   }
