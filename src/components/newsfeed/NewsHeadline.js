@@ -10,7 +10,7 @@ export default class NewsHeadline extends Component {
 
   render(){
     return (
-      <div>hello {this.props.headline}</div>
+      <div>{this.props.headline}</div>
     )
   }
 }

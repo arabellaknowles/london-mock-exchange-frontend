@@ -32,7 +32,6 @@ export default class Dashboard extends Component {
     this.setState({
       loadingNewsList: true,
     })
-    console.log(this.state.loadingNewsList)
   }
 
   loadDashboard(){
@@ -54,12 +53,7 @@ export default class Dashboard extends Component {
     .catch(err => console.log(err))
   }
 
-  // click on newsfeed rerender page with NewsList 
-
   render(){
-    console.log('portfolio id', this.state.portfolioID)
-    console.log('newlist loading?', this.state.loadingNewsList)
-
     if ((this.state.portfolioID === null) && (this.state.loadingNewsList === false)) {
       return (
         <div class="dashboard_background2">
