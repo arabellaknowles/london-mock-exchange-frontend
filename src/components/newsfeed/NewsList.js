@@ -23,7 +23,6 @@ export default class NewsList extends Component {
       this.setState({
         headlines: response.data.response.results
       })
-      console.log(response.data.response.results)
     })
     .catch(error => console.log(error))
   }

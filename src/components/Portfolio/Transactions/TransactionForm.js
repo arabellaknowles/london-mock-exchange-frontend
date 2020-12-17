@@ -44,7 +44,6 @@ export default class TransactionForm extends Component {
     let ticker = this.state.ticker
     let date = this.state.close_out_date
     let url = `${baseUrl}v1/tickers/${ticker}/eod/${date}?access_key=${accessKey}`
-    console.log('closing price url', url)
     axios.get(url)
     .then(data => {
       this.setState({
