@@ -12,9 +12,9 @@ $ npm install
 ```
 $ npm start
 ```
-then go to localhost:3000 in your brower.
-6) Run your backend server for full functionality
-5) To run a build of this app and deploy to surge, in your terminal run:
+then go to localhost:3000 in your brower.  
+5) Run your backend server for full functionality   
+6) To run a build of this app and deploy to surge, in your terminal run:
 ```
 $ npm run deploy
 ```
