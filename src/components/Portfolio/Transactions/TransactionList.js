@@ -56,8 +56,7 @@ export default class TransactionList extends Component {
         <div class="container">
           <div class="align-(middle)">
           <h1 classname="mt-5">{this.props.portfolio_name}</h1>
-          <button onClick={this.props.deletePortfolio}>Delete Portfolio</button>
-          <h5 class="float-(left)">Trade History</h5>
+          <h5>Trade History</h5>
             <table class="table table-bordered table-striped">
               <thead class="thead-dark">
                 <tr>
@@ -72,19 +71,23 @@ export default class TransactionList extends Component {
                 {this.state.transactions.map((transaction) => 
                 <Transaction 
                 ticker={transaction.ticker}
-                instrument_name={transaction.instrument_name}
-                number_of_shares={transaction.number_of_shares}
-                trade_date={transaction.trade_date}
-                close_out_date={transaction.close_out_date}
-                buy_price={transaction.buy_price}
-                sell_price={transaction.sell_price}
-                net_earnings={transaction.net_earnings}
-                portfolio_id={transaction.portfolio_id}
+                instrumentName={transaction.instrument_name}
+                numberOfShares={transaction.number_of_shares}
+                tradeDate={transaction.trade_date}
+                closeOutDate={transaction.close_out_date}
+                buyPrice={transaction.buy_price}
+                sellPrice={transaction.sell_price}
+                netEarnings={transaction.net_earnings}
+                portfolioId={transaction.portfolio_id}
                 />
                 )}
               </tbody>
             </table> 
-            <button class="btn btn-dark" onClick={this.loadTransactionForm}>Create New Trade</button>
+            <button class="btn btn-success" onClick={this.loadTransactionForm}>Make New Trade</button>
+            <br></br>
+            <br></br>
+            <button class="btn btn-warning" onClick={this.props.deletePortfolio}>Delete Portfolio</button>
+
           </div>
         </div>
       )
