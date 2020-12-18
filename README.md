@@ -1,23 +1,42 @@
-# Getting started with London Mock Exchange Frontend
+# London Mock Exchange Frontend
+This is a frontend static react webpage application for mock investments made in conjunction with [this backend London Mock Exchange API](https://github.com/arabellaknowles/london-mock-exchange-backend). It provides a user interface for signing up, in and out, for creating porfolios, listing portfolios and deleting portfolios, for creating transactions within these portolfolios and displaying a newsfeed of current financial articles. 
 
-This React App was made in conjunction with https://github.com/arabellaknowles/london-mock-exchange-backend and uses it as a backend. We recommend if you would like to use this app, that you also clone that repository and follow the instructions on the README.md there to get the app up and running. In further, we used the Marketstack API to get the historical data used for making trades.
-
-## Set Up
-
-1. Ensure you have npm installed before cloning the repo
-2. Clone this repo onto your local machine
-3. Run `$ npm install`
-4. Run `$ npm start`
-5. Get the backend API up and running on your local machine
-6. Navigate to [localhost](http://localhost:3000)
+## Set up
+1) Ensure you have npm installed
+2) Clone this repository.
+3) To install required dependencies, in your terminal run:
+```
+$ npm install
+```
+4) If you want to run this app locally, in your terminal run:
+```
+$ npm start
+```
+then go to localhost:3000 in your brower.
+6) Run your backend server for full functionality
+5) To run a build of this app and deploy to surge, in your terminal run:
+```
+$ npm run deploy
+```
+Then visit: http://londonmockexchange.surge.sh/
 
 ## Technologies Used
+- React
+- Javascript
+- HTML
+- CSS
+- The Market Stack API 
+- The Guardian API
+- CSS stylesheet from Bootstrap
 
-* React
-* Javascript
-* HTML
-* CSS
+## Future Improvements
+**App:**  
 
-## Future Additions
+- Making live trades with no closing date input
+- Creating a leaderboard comparing portfolio net earnings
+- Statistics and graphs generated from the transactions made 
 
-After initial production we have plans to make this application allow for live trading to be done. Additionally, we will be looking to add more performance statistics on the transaction and the portfolios themselves.
+**Code:**   
+- Refactoring of code
+  - Focussing on encapsulation and SRP
+- Testing the code - Jest and cypress
