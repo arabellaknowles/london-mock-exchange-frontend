@@ -1,24 +1,33 @@
 # London Mock Exchange Frontend
-This is a frontend static react webpage application for mock investments made in conjunction with [this backend London Mock Exchange API](https://github.com/arabellaknowles/london-mock-exchange-backend). It provides a user interface for signing up, in and out, for creating porfolios, listing portfolios and deleting portfolios, for creating transactions within these portolfolios and displaying a newsfeed of current financial articles. 
+This is a frontend static react webpage application for mock investments, made in conjunction with [this backend London Mock Exchange API](https://github.com/arabellaknowles/london-mock-exchange-backend).  
+
+This app provides a user interface for:
+- User registration  
+- Logging in and out
+- Creating and deleting portfolios
+- Listing portfolios  
+- Creating transactions  
+- Listing transactions  
+- Displaying a newsfeed of current financial articles  
 
 ## Set up
-1) Ensure you have npm installed
-2) Clone this repository.
-3) To install required dependencies, in your terminal run:
+1. Ensure you have npm installed
+2. Clone this repository
+3. To install required dependencies, in your terminal run:
 ```
 $ npm install
 ```
-4) If you want to run this app locally, in your terminal run:
+4. If you want to run this app locally, in your terminal run:
 ```
 $ npm start
-```
-then go to localhost:3000 in your brower.  
-5) Run your backend server for full functionality   
-6) To run a build of this app and deploy to surge, in your terminal run:
+``` 
+5. Go to http://localhost:3000 in your brower  
+6. Run your backend server for full functionality   
+7. To run a build of this app and deploy to surge, in your terminal run:
 ```
 $ npm run deploy
 ```
-Then visit: http://londonmockexchange.surge.sh/
+8. Then visit: http://londonmockexchange.surge.sh/
 
 ## Technologies Used
 - React
