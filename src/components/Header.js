@@ -19,14 +19,14 @@ export default class Header extends Component {
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-          { this.props.userToken !== null ? <li class="nav-item active">
-              <button type="button" class="btn btn-dark" onClick={this.props.loadDashboard}>Home
+            <li class="nav-item active">
+              <button type="button" class="btn btn-dark" onClick={this.props.loadHomePage}>Home
                 <span class="sr-only">(current)</span>
                 </button>
-            </li> : '' }
-            { this.props.userToken !== null ? <li class="nav-item">
+            </li> 
+            <li class="nav-item">
               <button type="button" class="btn btn-dark" onClick={this.props.loadNewsList}>Newsfeed</button>
-            </li> : '' }
+            </li>
             { this.props.userToken !== null ? <li class="nav-item">
               <button type="button" class="btn btn-dark" onClick={this.props.handleLogout}>Logout</button>
             </li> : '' }
