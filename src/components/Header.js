@@ -10,6 +10,8 @@ export default class Header extends Component {
   }
 
   render(){
+    let loading_homepage_method = (this.props.loadingNewsList ? this.props.loadHomePage : this.props.loadDashboard)
+
     return (
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
       <div class="container">
@@ -20,7 +22,7 @@ export default class Header extends Component {
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <button type="button" class="btn btn-dark" onClick={this.props.loadHomePage}>Home
+              <button type="button" class="btn btn-dark" onClick={loading_homepage_method}>Home
                 <span class="sr-only">(current)</span>
                 </button>
             </li> 

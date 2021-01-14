@@ -64,6 +64,7 @@ export default class App extends Component {
                 handleLogout={this.handleLogout}
                 loadHomePage={this.loadHomePage}
                 loadNewsList={this.loadNewsList}
+                loadingNewsList={this.state.loadingNewsList}
               />
               <Home
                 handleLogin={this.handleLogin}
@@ -84,6 +85,7 @@ export default class App extends Component {
                   handleLogout={this.handleLogout}
                   loadHomePage={this.loadHomePage}
                   loadNewsList={this.loadNewsList}
+                  loadingNewsList={this.state.loadingNewsList}
                 />
                 <div class="div1">
                   <NewsList />
@@ -103,6 +105,7 @@ export default class App extends Component {
                 handleLogout={this.handleLogout}
                 loadHomePage={this.loadHomePage}
                 loadNewsList={this.loadNewsList}
+                loadingNewsList={this.state.loadingNewsList}
               /> 
             </div> 
           </div>

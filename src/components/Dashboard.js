@@ -65,6 +65,7 @@ export default class Dashboard extends Component {
           handleLogout={this.props.handleLogout}
           loadDashboard={this.loadDashboard}
           loadNewsList={this.props.loadNewsList}
+          loadingNewsList={this.props.loadingNewsList}
           />
           <div class="div1">
             <h1 classname="mt-5">My Portfolios</h1>
@@ -81,6 +82,7 @@ export default class Dashboard extends Component {
             handleLogout={this.props.handleLogout}
             loadDashboard={this.loadDashboard}
             loadNewsList={this.props.loadNewsList}
+            loadingNewsList={this.props.loadingNewsList}
           />
         <div class="container">
             <PortfolioForm loadDashboard={this.loadDashboard} userToken={this.props.userToken}/> 
@@ -95,6 +97,7 @@ export default class Dashboard extends Component {
               handleLogout={this.props.handleLogout}
               loadDashboard={this.loadDashboard}
               loadNewsList={this.props.loadNewsList}
+              loadingNewsList={this.props.loadingNewsList}
             />
             <div class="div1">
               <TransactionList 
