@@ -1,6 +1,8 @@
 # London Mock Exchange Frontend
 This is a frontend static react webpage application for mock investments, made in conjunction with [this backend London Mock Exchange API](https://github.com/arabellaknowles/london-mock-exchange-backend).  
 
+Live website available: http://londonmockexchange.surge.sh/
+
 This app provides a user interface for:
 - User registration  
 - Logging in and out
