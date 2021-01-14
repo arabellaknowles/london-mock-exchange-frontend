@@ -24,7 +24,7 @@ export default class Registration extends Component {
   }
 
   handleSubmit(event){
-    axios.post("http://localhost:8000/api/v1/rest-auth/registration/", {
+    axios.post("https://london-mock-exchange.herokuapp.com/api/v1/rest-auth/registration/", {
         username: this.state.username,
         email: this.state.email,
         password1: this.state.password,

@@ -23,7 +23,7 @@ export default class TransactionList extends Component {
   }
 
   loadTransactions() {
-    let url = "http://localhost:8000/api/v1/portfolio/" + this.props.portfolio_id + "/transaction/"
+    let url = "https://london-mock-exchange.herokuapp.com/api/v1/portfolio/" + this.props.portfolio_id + "/transaction/"
     axios.get(url, 
     { headers: {
       'Authorization': this.props.userToken

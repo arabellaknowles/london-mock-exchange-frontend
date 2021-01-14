@@ -67,7 +67,7 @@ export default class TransactionForm extends Component {
   }
 
   postTransaction() {
-    axios.post("http://localhost:8000/api/v1/portfolio/" + this.props.portfolio_id + "/transaction/", {
+    axios.post("https://london-mock-exchange.herokuapp.com/api/v1/portfolio/" + this.props.portfolio_id + "/transaction/", {
         ticker: this.state.ticker,
         instrument_name: this.state.instrumentName,
         number_of_shares: this.state.numberOfShares,

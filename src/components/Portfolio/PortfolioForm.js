@@ -20,7 +20,7 @@ export default class PortfolioForm extends Component {
   }
 
   handleSubmit(event){
-    axios.post("http://localhost:8000/api/v1/portfolio/", {
+    axios.post("https://london-mock-exchange.herokuapp.com/api/v1/portfolio/", {
       name: this.state.portfolioName,
       net_earnings: 0
     },
