@@ -42,7 +42,7 @@ export default class Dashboard extends Component {
   }
 
   deletePortfolio(event){
-    let url = "http://localhost:8000/api/v1/portfolio/" + this.state.portfolioID
+    let url = "https://london-mock-exchange.herokuapp.com/api/v1/portfolio/" + this.state.portfolioID
     axios.delete(url, {
       headers: {
         'Authorization': this.props.userToken

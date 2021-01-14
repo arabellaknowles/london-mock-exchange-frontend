@@ -33,7 +33,7 @@ export default class PortfolioList extends Component {
   }
 
   loadPortfolios() {
-    axios.get("http://localhost:8000/api/v1/portfolio", 
+    axios.get("https://london-mock-exchange.herokuapp.com/api/v1/portfolio", 
     { headers: {
       'Authorization': this.props.userToken
     }},

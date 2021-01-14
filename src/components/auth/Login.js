@@ -22,7 +22,7 @@ export default class Login extends Component {
   }
 
   handleSubmit(event){
-    axios.post("http://localhost:8000/api/v1/rest-auth/login/", {
+    axios.post("https://london-mock-exchange.herokuapp.com/api/v1/rest-auth/login/", {
         username: this.state.username,
         password: this.state.password,
     },
