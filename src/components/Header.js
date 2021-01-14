@@ -10,20 +10,22 @@ export default class Header extends Component {
   }
 
   render(){
+    let loading_homepage_method = (this.props.loadingNewsList ? this.props.loadHomePage : this.props.loadDashboard)
+
     return (
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
       <div class="container">
-        <a class="navbar-brand">London Mock Exchange</a>
+        <p class="navbar-brand">London Mock Exchange</p>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <button type="button" class="btn btn-dark" onClick={this.props.loadDashboard}>Home
+              <button type="button" class="btn btn-dark" onClick={loading_homepage_method}>Home
                 <span class="sr-only">(current)</span>
                 </button>
-            </li>
+            </li> 
             <li class="nav-item">
               <button type="button" class="btn btn-dark" onClick={this.props.loadNewsList}>Newsfeed</button>
             </li>

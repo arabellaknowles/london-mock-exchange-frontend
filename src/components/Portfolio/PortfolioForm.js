@@ -32,7 +32,6 @@ export default class PortfolioForm extends Component {
     .then((res)  => 
       this.props.loadDashboard()
     )
-    .then(() => this.props.loadPortfolios())
     .catch(error => {
       console.log("error", error)
     })
