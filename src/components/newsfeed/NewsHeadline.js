@@ -12,7 +12,7 @@ export default class NewsHeadline extends Component {
     return (
       <div class="container">
         <h4><a href={this.props.url}>{this.props.headline}</a></h4>
-        <img src={this.props.thumbnail}></img>
+        <img src={this.props.thumbnail} alt='background image'></img>
       </div>
     )
   }
