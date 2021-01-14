@@ -27,12 +27,6 @@ export default class Header extends Component {
             <li class="nav-item">
               <button type="button" class="btn btn-dark" onClick={this.props.loadNewsList}>Newsfeed</button>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/">Leaderboard</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/">Contact</a>
-            </li>
             { this.props.userToken !== null ? <li class="nav-item">
               <button type="button" class="btn btn-dark" onClick={this.props.handleLogout}>Logout</button>
             </li> : '' }

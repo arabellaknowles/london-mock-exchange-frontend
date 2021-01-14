@@ -30,7 +30,7 @@ export default class PortfolioForm extends Component {
     { withCredentials: true }
     )
     .then((res)  => 
-      this.props.notShowPortfolioForm()
+      this.props.loadDashboard()
     )
     .then(() => this.props.loadPortfolios())
     .catch(error => {
