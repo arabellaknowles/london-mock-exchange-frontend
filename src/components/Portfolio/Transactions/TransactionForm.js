@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import FlashMessage from 'react-flash-message'
 
 export default class TransactionForm extends Component {
   constructor(props){
@@ -13,6 +14,7 @@ export default class TransactionForm extends Component {
       buyPrice: '',
       sellPrice: '',
       netEarnings: '', 
+      error: false
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -85,11 +87,14 @@ export default class TransactionForm extends Component {
     .then(() => this.props.loadTransactionList())
     .then(() => this.props.loadTransactions())
     .catch(error => {
-      console.log("error", error)
+      this.setState ({
+        error: true
+      })
     })
   }
 
   handleSubmit(event){ 
+    this.setState({ error: false });
     this.fetchTradeClosingPrice()
     event.preventDefault();
   }
@@ -159,6 +164,13 @@ export default class TransactionForm extends Component {
             </div>
           </div>
         <button class="btn btn-success btn-block" type="submit">Make Trade</button>
+        { this.state.error &&  
+        <div>
+            <FlashMessage duration={5000}>
+              <strong>Transactions must be made after 2019 and on working days</strong>
+            </FlashMessage>
+        </div>
+        }
         </form>
       </div>
     )
