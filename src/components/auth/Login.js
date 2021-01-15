@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import FlashMessage from 'react-flash-message'
 
 export default class Login extends Component {
   constructor(props) {
@@ -9,6 +10,7 @@ export default class Login extends Component {
       username:"",
       password:"",
       loginErrors: "",
+      error: false
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,6 +24,7 @@ export default class Login extends Component {
   }
 
   handleSubmit(event){
+    this.setState ({ error: false })
     axios.post("https://london-mock-exchange.herokuapp.com/api/v1/rest-auth/login/", {
         username: this.state.username,
         password: this.state.password,
@@ -34,12 +37,13 @@ export default class Login extends Component {
       }
     })
     .catch(error => {
-      alert("Login failed, please try again", error);
+      this.setState ({ error: error.response.data.non_field_errors[0] })
     })
     event.preventDefault();
   }
 
   render() {
+    console.log((this.state.error !== false))
     return (
       <div class="container">
         <form class="form-horizontal" role="form" onSubmit={this.handleSubmit}>
@@ -80,6 +84,13 @@ export default class Login extends Component {
             </div>
           <button class="btn btn-secondary btn-block" type="submit">Login</button>
           <button class="btn btn-link" onClick={this.props.handleSignUp}>Register Here</button>
+          { (this.state.error !== false) &&  
+              <div>
+                  <FlashMessage duration={5000}>
+                    <strong>{this.state.error}</strong>
+                  </FlashMessage>
+              </div>
+          }
         </form>
       </div>
     );
