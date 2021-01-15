@@ -43,7 +43,6 @@ export default class Login extends Component {
   }
 
   render() {
-    console.log((this.state.error !== false))
     return (
       <div class="container">
         <form class="form-horizontal" role="form" onSubmit={this.handleSubmit}>

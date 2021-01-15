@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import FlashMessage from 'react-flash-message'
 
 export default class Registration extends Component {
   constructor(props) {
@@ -11,6 +12,7 @@ export default class Registration extends Component {
       password:"",
       password_confirmation: "",
       registrationErrors: "",
+      error: false
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,6 +26,7 @@ export default class Registration extends Component {
   }
 
   handleSubmit(event){
+    this.setState ({ error: false })
     axios.post("https://london-mock-exchange.herokuapp.com/api/v1/rest-auth/registration/", {
         username: this.state.username,
         email: this.state.email,
@@ -39,7 +42,13 @@ export default class Registration extends Component {
     })
     .then(() => this.props.notSigningUp())
     .catch(error => {
-      console.log("registration error", error);
+      if (error.response.data.email) {
+        this.setState ({ error: error.response.data.email })
+      } else if (error.response.data.username) {
+        this.setState ({ error: error.response.data.username })
+      } else {
+        this.setState ({ error: 'Passwords do not match' })
+      }
     })
     event.preventDefault();
   }
@@ -107,6 +116,13 @@ export default class Registration extends Component {
           </div>
           <button class="btn btn-success btn-block" type="submit">Register</button>
           <button class="btn btn-link" onClick={this.props.notSigningUp}>Already registered? Login here</button>
+          { (this.state.error !== false) &&  
+              <div>
+                  <FlashMessage duration={5000}>
+                    <strong>{this.state.error}</strong>
+                  </FlashMessage>
+              </div>
+          }
         </form>
       </div>
     );
